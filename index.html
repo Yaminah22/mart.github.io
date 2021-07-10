@@ -9,56 +9,60 @@
   <meta name="HandheldFriendly" content="true">
   <link rel="stylesheet" href="CSS\stylingCustomer_homePage.css">
   <link rel="icon" href="CHPImages\logo.ico" type="image/x-icon">
-  <script src="customer_homePage.js"></script>
+
 </head>
 
 <body>
   <!--Top Navigation Pane-->
   <div id="header">
-    <p class="Admin"><strong><a>Switch To Admin &nbsp</a></strong></p>
+    <div class="Admin">
+    <p ><strong><a>Switch To Admin &nbsp</a></strong></p>
+    </div>
     <div class="firstLine">
       <ul>
         <li>
           <!--Logo and Title-->
           <div id="pageTitle">
-          <a href="./customer_homePage.html">
-            <div id="logoImg">
-              <img src="CHPImages\title.png" alt="Mart">
-            </div>
-            <h1 class="pageTitleHeading">Mart</h1>
-          </a>
-        </div>
+            <a href="./customer_homePage.html">
+              <div id="logoImg">
+                <img src="CHPImages\title.png" alt="Mart">
+              </div>
+              <h1 class="pageTitleHeading">Mart</h1>
+            </a>
+          </div>
         </li>
         <li>
           <!--Search Bar-->
           <div class="searchBarContainer">
-          <form class="search" action="/action_page.php">
-            <input type="text" name="SearchBar" placeholder="Find in Mart...">
-            <div id="Search-Button"><img src="CHPImages\search.png"></div>
-          </form>
+            <form class="search" action="/action_page.php">
+              <input class="searchBar" type="text" name="SearchBar" placeholder="Find in Mart...">
+              <div id="Search-Button"><img src="CHPImages\search.png"></div>
+            </form>
           </div>
         </li>
-        <li><!--User Accounts icon-->
-        <div id="account_icon">
-          <div id="account_btn">
-            <img src="CHPImages\accountIcon.png">
+        <li>
+          <!--User Accounts icon-->
+          <div id="account_icon">
+            <div id="account_btn">
+              <img src="CHPImages\accountIcon.png">
+            </div>
             <p id="account_name">Guest</p>
+            <div id="account_dropdown">
+              <a href="./CustomerLogin.html" class="default">Login</a>
+              <a href="./CustomerSignup.html" class="default">Sign Up</a>
+              <a href="#" class="loggedIn">Log out</a>
+            </div>
           </div>
-          <div id="account_dropdown">
-            <a href="./CustomerLogin.html" class="default">Login</a>
-            <a href="./CustomerSignup.html" class="default">Sign Up</a>
-            <a href="#" class="loggedIn">Log out</a>
-          </div>
-        </div></li>
+        </li>
         <li>
           <!--Cart Status-->
           <div class="cart">
-          <a href="#">
-            <div id="cart_icon">
-              <img src="CHPImages\cartIcon.png">
-              <span id="cart_total">0</span>
-            </div>
-            </div>
+            <a href="#">
+              <div id="cart_icon">
+                <img src="CHPImages\cartIcon.png">
+                <span id="cart_total">0</span>
+              </div>
+          </div>
           </a>
         </li>
       </ul>
@@ -75,6 +79,8 @@
       </ul>
     </div>
   </div>
+  <!--Categories Side Navigation-->
+  <div id="mainContainer">
   <div class="categories_navigation">
     <ul id="mainList">
       <li>Bakery Items
@@ -142,311 +148,311 @@
   </div>
   <!--Sales/Discounts' slide show -->
   <div class="slide_container">
-    <span id="slider_image_1"></span>
-    <span id="slider_image_2"></span>
-    <span id="slider_image_3"></span>
-    <span id="slider_image_4"></span>
-    <div class="image_container">
+    <div class="image_container fade">
       <img src="CHPImages\slide1.jpg" class="slider_image">
+    </div>
+    <div class="image_container fade">
       <img src="CHPImages\slide2.jpg" class="slider_image">
+    </div>
+    <div class="image_container fade">
       <img src="CHPImages\slide3.jpg" class="slider_image">
+    </div>
+    <div class="image_container fade">
       <img src="CHPImages\slide4.jpg" class="slider_image">
     </div>
-    <div class="button_container">
-      <a href="#slider_image_1" class="slider_button"></a>
-      <a href="#slider_image_2" class="slider_button"></a>
-      <a href="#slider_image_3" class="slider_button"></a>
-      <a href="#slider_image_4" class="slider_button"></a>
-    </div>
   </div>
-
+</div>
+<div id="dotContainer">
+  <span class="dot"></span>
+  <span class="dot"></span>
+  <span class="dot"></span>
+  <span class="dot"></span>
+</div>
   <!--Most Popular-->
+  <h2 class="level2Headings">Best Sellers</h2>
   <div id="bestSeller">
-    <h2 class="level2Headings">Best Sellers</h2>
     <!--Best Sellers list-->
     <div class="horizontal_list_container">
+      <div class="productCards">
+        <a href="#">
+          <div class="cardImages">
+            <img src="CHPImages\bseller-1.jpg" alt="National Bombay Biryani-100g">
+          </div>
+          <h4 class="title">National Bombay Biryani-100g</h4>
+          <p class="Price">Rs.200</p>
+          <p class="avalability">In Stock</p>
+        </a>
+      </div>
+      <div class="productCards">
+        <a href="#">
+          <div class="cardImages">
+            <img src="CHPImages\bseller-2.jpg" alt="Olpers-200ml">
+          </div>
+          <h4 class="title">Olper's Full Cream Milk-200ml</h4>
+          <p class="Price">Rs.300</p>
+          <p class="avalability">In Stock</p>
+        </a>
+      </div>
+      <div class="productCards">
+        <a href="#">
+          <div class="cardImages">
+            <img src="CHPImages\bseller-3.jpg" alt="Young's Mayonnaise-150ml">
+          </div>
+          <h4 class="title">Young's Mayonnaise-150ml</h4>
+          <p class="Price">Rs.429</p>
+          <p class="avalability">In Stock</p>
+        </a>
+      </div>
+      <div class="productCards">
+        <a href="#">
+          <div class="cardImages">
+            <img src="CHPImages\bseller-4.jpg" alt="Rafhan's Cornflour-200gm">
+          </div>
+          <h4 class="title">Rafhan's Cornflour-200gm</h4>
+          <p class="Price">Rs.150</p>
+          <p class="avalability">In Stock</p>
+        </a>
+      </div>
+      <div class="productCards">
+        <a href="#">
+          <div class="cardImages">
+            <img src="CHPImages\bseller-5.jpg" alt="Dawn Bread-380gm">
+          </div>
+          <h4 class="title">Dawn's Vitamin Bread - 380gm</h4>
+          <p class="Price">Rs.140</p>
+          <p class="avalability">In Stock</p>
+        </a>
+      </div>
+    </div>
+  </div>
+  <!--Popular Brands-->
+  <h2 class="level2Headings">Popular Brands</h2>
+  <div id="popularBrands">
+    <!--Popular Brands List-->
+    <div class="horizontal_list_container">
+      <div class="productCards">
+        <a href="#">
+          <div class="cardImages">
+            <img src="CHPImages\brand-1.jpg" alt="Nestle">
+          </div>
+          <h4 class="brandsTitle">Nestle</h4>
+        </a>
+      </div>
+      <div class="productCards">
+        <a href="#">
+          <div class="cardImages">
+            <img src="CHPImages\brand-2.jpg" alt="National">
+          </div>
+          <h4 class="brandsTitle">National</h4>
+        </a>
+      </div>
+      <div class="productCards">
+        <a href="#">
+          <div class="cardImages">
+            <img src="CHPImages\brand-3.jpg" alt="Pepsi">
+          </div>
+          <h4 class="brandsTitle">Pepsi</h4>
+        </a>
+      </div>
+      <div class="productCards">
+        <a href="#">
+          <div class="cardImages">
+            <img src="CHPImages\brand-4.jpg" alt="Dawn">
+          </div>
+          <h4 class="brandsTitle">Dawn</h4>
+        </a>
+      </div>
+      <div class="productCards">
+        <a href="#">
+          <div class="cardImages">
+            <img src="CHPImages\brand-5.jpg" alt="Nescafe">
+          </div>
+          <h4 class="brandsTitle">Nescafe</h4>
+        </a>
+      </div>
+    </div>
+  </div>
+  <!--Categories Cards-->
+  <h2 class="level2Headings">Categories</h2>
+  <div id="categoriesCards">
+    <div class="categoriesCard">
+      <div class="categoriesCardImage">
+        <img src="CHPImages\bakery.png" alt="Bakery">
+      </div>
+      <p class="cardNames">Bakery</p>
       <ul>
-        <li><a href="#">
-            <div class="productCards">
-              <div class="cardImages">
-                <img src="CHPImages\bseller-1.jpg" alt="National Bombay Biryani-100g">
-              </div>
-              <h4 class="title">National Bombay Biryani-100g</h4>
-              <p class="Price">Rs.200</p>
-              <p class="avalability">In Stock</p>
-            </div>
-          </a></li>
-        <li><a href="#">
-            <div class="productCards">
-              <div class="cardImages">
-                <img src="CHPImages\bseller-2.jpg" alt="Olpers-200ml">
-              </div>
-              <h4 class="title">Olper's Full Cream Milk-200ml</h4>
-              <p class="Price">Rs.300</p>
-              <p class="avalability">In Stock</p>
-            </div>
-          </a></li>
-        <li><a href="#">
-            <div class="productCards">
-              <div class="cardImages">
-                <img src="CHPImages\bseller-3.jpg" alt="Young's Mayonnaise-150ml">
-              </div>
-              <h4 class="title">Young's Mayonnaise-150ml</h4>
-              <p class="Price">Rs.429</p>
-              <p class="avalability">In Stock</p>
-            </div>
-          </a></li>
-        <li><a href="#">
-            <div class="productCards">
-              <div class="cardImages">
-                <img src="CHPImages\bseller-4.jpg" alt="Rafhan's Cornflour-200gm">
-              </div>
-              <h4 class="title">Rafhan's Cornflour-200gm</h4>
-              <p class="Price">Rs.150</p>
-              <p class="avalability">In Stock</p>
-            </div>
-          </a></li>
-        <li><a href="#">
-            <div class="productCards">
-              <div class="cardImages">
-                <img src="CHPImages\bseller-5.jpg" alt="Dawn Bread-380gm">
-              </div>
-              <h4 class="title">Dawn's Vitamin Bread - 380gm</h4>
-              <p class="Price">Rs.140</p>
-              <p class="avalability">In Stock</p>
-            </div>
-          </a></li>
+        <li class="categoriesItems"><a href="#">fresh breads</a></li>
+        <li class="categoriesItems"><a href="#">pastries</a></li>
+        <li class="categoriesItems"><a href="#">buns</a></li>
       </ul>
     </div>
-    <!--Popular Brands-->
-    <div id="popularBrands">
-      <h2 id="popularBrandTitle">Popular Brands</h2>
-      <!--Popular Brands List-->
-      <div class="horizontal_list_container">
-        <ul>
-          <li><a href="#">
-              <div class="productCards">
-                <div class="cardImages">
-                  <img src="CHPImages\brand-1.jpg" alt="Nestle">
-                </div>
-                <h4 class="brandsTitle">Nestle</h4>
-              </div>
-            </a></li>
-          <li><a href="#">
-              <div class="productCards">
-                <div class="cardImages">
-                  <img src="CHPImages\brand-2.jpg" alt="National">
-                </div>
-                <h4 class="brandsTitle">National</h4>
-              </div>
-            </a></li>
-          <li><a href="#">
-              <div class="productCards">
-                <div class="cardImages">
-                  <img src="CHPImages\brand-3.jpg" alt="Pepsi">
-                </div>
-                <h4 class="brandsTitle">Pepsi</h4>
-              </div>
-            </a></li>
-          <li><a href="#">
-              <div class="productCards">
-                <div class="cardImages">
-                  <img src="CHPImages\brand-4.jpg" alt="Dawn">
-                </div>
-                <h4 class="brandsTitle">Dawn</h4>
-              </div>
-            </a></li>
-          <li><a href="#">
-              <div class="productCards">
-                <div class="cardImages">
-                  <img src="CHPImages\brand-5.jpg" alt="Nescafe">
-                </div>
-                <h4 class="brandsTitle">Nescafe</h4>
-              </div>
-            </a></li>
-        </ul>
+    <div class="categoriesCard">
+      <div class="categoriesCardImage">
+        <img src="CHPImages\Can.png" alt="Canned Goods">
       </div>
+      <p class="cardNames">Canned Goods</p>
+      <ul>
+        <li class="categoriesItems"><a href="#">soups</a></li>
+        <li class="categoriesItems"><a href="#">fruits</a></li>
+        <li class="categoriesItems"><a href="#">nuts</a></li>
+      </ul>
     </div>
-    <!--Categories Cards-->
-    <h2 id="categoriesHeading">Categories</h2>
-    <div id="categoriesCards">
-      <div class="categoriesCard">
-        <div class="categoriesCardImage">
-          <img src="CHPImages\bakery.png" alt="Bakery">
-        </div>
-        <p class="cardNames">Bakery</p>
-        <ul>
-          <li class="categoriesItems"><a href="#">fresh breads</a></li>
-          <li class="categoriesItems"><a href="#">pastries</a></li>
-          <li class="categoriesItems"><a href="#">buns</a></li>
-        </ul>
+    <div class="categoriesCard">
+      <div class="categoriesCardImage">
+        <img src="CHPImages\dairy.png" alt="Dairy Products">
       </div>
-      <div class="categoriesCard">
-        <div class="categoriesCardImage">
-          <img src="CHPImages\Can.png" alt="Canned Goods">
-        </div>
-        <p class="cardNames">Canned Goods</p>
-        <ul>
-          <li class="categoriesItems"><a href="#">soups</a></li>
-          <li class="categoriesItems"><a href="#">fruits</a></li>
-          <li class="categoriesItems"><a href="#">nuts</a></li>
-        </ul>
-      </div>
-      <div class="categoriesCard">
-        <div class="categoriesCardImage">
-          <img src="CHPImages\dairy.png" alt="Dairy Products">
-        </div>
-        <p class="cardNames">Dairy Products</p>
-        <ul>
-          <li class="categoriesItems"><a href="#">Eggs</a></li>
-          <li class="categoriesItems"><a href="#">Cheese</a></li>
-          <li class="categoriesItems"><a href="#">Milk</a></li>
-        </ul>
-      </div>
-      <div class="categoriesCard">
-        <div class="categoriesCardImage">
-          <img src="CHPImages\snacks.png" alt="Snacks">
-        </div>
-        <p class="cardNames">Snacks</p>
-        <ul>
-          <li class="categoriesItems"><a href="#">Cookies</a></li>
-          <li class="categoriesItems"><a href="#">Crackers</a></li>
-          <li class="categoriesItems"><a href="#">Chips</a></li>
-        </ul>
-      </div>
-      <div class="categoriesCard">
-        <div class="categoriesCardImage">
-          <img src="CHPImages\fresh.png" alt="Fresh Produces">
-        </div>
-        <p class="cardNames">Fresh Produces</p>
-        <ul>
-          <li class="categoriesItems"><a href="#">Vegetables</a></li>
-          <li class="categoriesItems"><a href="#">Fruits</a></li>
-        </ul>
-      </div>
-      <div class="categoriesCard">
-        <div class="categoriesCardImage">
-          <img src="CHPImages\meat.png" alt="Meat & Seafood">
-        </div>
-        <p class="cardNames">Meat & Seafood</p>
-        <ul>
-          <li class="categoriesItems"><a href="#">Chicken</a></li>
-          <li class="categoriesItems"><a href="#">Goat Meat</a></li>
-          <li class="categoriesItems"><a href="#">Fish</a></li>
-        </ul>
-      </div>
-      <div class="categoriesCard">
-        <div class="categoriesCardImage">
-          <img src="CHPImages\beverages.png" alt="Beverages">
-        </div>
-        <p class="cardNames">Beverages</p>
-        <ul>
-          <li class="categoriesItems"><a href="#">Juices</a></li>
-          <li class="categoriesItems"><a href="#">Carbonated Drinks</a></li>
-          <li class="categoriesItems"><a href="#">Energy Drinks</a></li>
-        </ul>
-      </div>
-      <div class="categoriesCard">
-        <div class="categoriesCardImage">
-          <img src="CHPImages\frozen.png" alt="Frozen Food">
-        </div>
-        <p class="cardNames">Frozen Food</p>
-        <ul>
-          <li class="categoriesItems"><a href="#">Ice Cream</a></li>
-          <li class="categoriesItems"><a href="#">Half Cooked</a></li>
-        </ul>
-      </div>
-      <div class="categoriesCard">
-        <div class="categoriesCardImage">
-          <img src="CHPImages\g+p.png" alt="Grains and Pasta">
-        </div>
-        <p class="cardNames">Grains & Pasta</p>
-        <ul>
-          <li class="categoriesItems"><a href="#">Flour</a></li>
-          <li class="categoriesItems"><a href="#">Spaghetti</a></li>
-          <li class="categoriesItems"><a href="#">Spices</a></li>
-        </ul>
-      </div>
+      <p class="cardNames">Dairy Products</p>
+      <ul>
+        <li class="categoriesItems"><a href="#">Eggs</a></li>
+        <li class="categoriesItems"><a href="#">Cheese</a></li>
+        <li class="categoriesItems"><a href="#">Milk</a></li>
+      </ul>
     </div>
-    <!--Footer-->
-    <div id="footer">
-      <div class="footerBox">
-        <h3 class="footerBoxHeading">Brands</h3>
-        <ul id="brandsList">
-          <li>Nescafe</li>
-          <li>National Foods</li>
-          <li>Dawn</li>
-          <li>Nestle</li>
-          <li>Pepsi</li>
-          <li>Shan Foods</li>
-          <li>Olper</li>
-          <li>Rafhan</li>
-          <li>Bake Parlor</li>
-          <li>Uniliver</li>
-        </ul>
+    <div class="categoriesCard">
+      <div class="categoriesCardImage">
+        <img src="CHPImages\snacks.png" alt="Snacks">
       </div>
-      <div class="footerBox">
-        <h3 class="footerBoxHeading">Contact Us</h3>
-        <ul>
-          <li class="footerContainer">
-            <a class="footerLink" href="mailto:siddiquiyaminah2@gmail.com? subject=Mart Customer Email">
-              <div class="footerImageContainer"><img src="CHPImages\mail.png" alt="email Icon"></div>
-              <p class="linkText">siddiquiyaminah2@gmail.com</p>
-            </a>
-          </li>
-          <li class="footerContainer">
-            <a class="footerLink" href="mailto:bushraghaffar33@gmail.com? subject=Mart Customer Email">
-              <div class="footerImageContainer"><img src="CHPImages\mail.png" alt="email Icon"></div>
-              <p class="linkText">bushraghaffar33@gmail.com</p>
-            </a>
-          </li>
-          <li class="footerContainer">
-            <a class="footerLink" href="tel:+923317665690">
-              <div class="footerImageContainer"><img src="CHPImages\contact.png" alt="phone icon"></div>
-              <p class="linkText">+923317665690</p>
-            </a>
-          </li>
-          <li class="footerContainer">
-            <a class="footerLink" href="tel:+923317665690">
-              <div class="footerImageContainer"><img src="CHPImages\contact.png" alt="phone icon"></div>
-              <p class="linkText">+923317235690</p>
-            </a>
-          </li>
-        </ul>
+      <p class="cardNames">Snacks</p>
+      <ul>
+        <li class="categoriesItems"><a href="#">Cookies</a></li>
+        <li class="categoriesItems"><a href="#">Crackers</a></li>
+        <li class="categoriesItems"><a href="#">Chips</a></li>
+      </ul>
+    </div>
+    <div class="categoriesCard">
+      <div class="categoriesCardImage">
+        <img src="CHPImages\fresh.png" alt="Fresh Produces">
       </div>
-        <div class="footerBox">
-          <h3 class="footerBoxHeading">Follow Us</h3>
-          <ul>
-            <li id="followUsList">
-              <a href="#">
-                <div class="footerImageContainer"><img src="CHPImages\fb.png" alt="facebook icon"></div>
-              </a>
-              <a href="#">
-                <div class="footerImageContainer"><img src="CHPImages\insta.png" alt="instagram icon"></div>
-              </a>
-              <a href="#">
-                <div class="footerImageContainer"><img src="CHPImages\twitter.png" alt="twitter icon"></div>
-              </a>
-            </li>
-            <li id="logoInFooter">
-                <div id="logoFooterImg">
-                  <img src="CHPImages\title.png" alt="Mart">
-                </div>
-                <h1 class="pageTitleHeading">Mart</h1>
-            </li>
-            <li id="websiteMotto">Shop from Home!</li>
-          </ul>
-        </div>
+      <p class="cardNames">Fresh Produces</p>
+      <ul>
+        <li class="categoriesItems"><a href="#">Vegetables</a></li>
+        <li class="categoriesItems"><a href="#">Fruits</a></li>
+      </ul>
+    </div>
+    <div class="categoriesCard">
+      <div class="categoriesCardImage">
+        <img src="CHPImages\meat.png" alt="Meat & Seafood">
       </div>
-      <!--Bottom Most Pane-->
-      <di id="bottomPane">
-        <ul>
-          <li class="bottomItems"><a href="#">Privacy Policy</a></li>
-          <li class="bottomItems">&copy; 2021 My Mart.com</li>
-          <li class="bottomItems"><a href="#">License & Agreement</a></li>
-          <li class="bottomItems"><a href="#">About Us</a></li>
-        </ul>
-      </di>
+      <p class="cardNames">Meat & Seafood</p>
+      <ul>
+        <li class="categoriesItems"><a href="#">Chicken</a></li>
+        <li class="categoriesItems"><a href="#">Goat Meat</a></li>
+        <li class="categoriesItems"><a href="#">Fish</a></li>
+      </ul>
+    </div>
+    <div class="categoriesCard">
+      <div class="categoriesCardImage">
+        <img src="CHPImages\beverages.png" alt="Beverages">
+      </div>
+      <p class="cardNames">Beverages</p>
+      <ul>
+        <li class="categoriesItems"><a href="#">Juices</a></li>
+        <li class="categoriesItems"><a href="#">Carbonated Drinks</a></li>
+        <li class="categoriesItems"><a href="#">Energy Drinks</a></li>
+      </ul>
+    </div>
+    <div class="categoriesCard">
+      <div class="categoriesCardImage">
+        <img src="CHPImages\frozen.png" alt="Frozen Food">
+      </div>
+      <p class="cardNames">Frozen Food</p>
+      <ul>
+        <li class="categoriesItems"><a href="#">Ice Cream</a></li>
+        <li class="categoriesItems"><a href="#">Half Cooked</a></li>
+      </ul>
+    </div>
+    <div class="categoriesCard">
+      <div class="categoriesCardImage">
+        <img src="CHPImages\g+p.png" alt="Grains and Pasta">
+      </div>
+      <p class="cardNames">Grains & Pasta</p>
+      <ul>
+        <li class="categoriesItems"><a href="#">Flour</a></li>
+        <li class="categoriesItems"><a href="#">Spaghetti</a></li>
+        <li class="categoriesItems"><a href="#">Spices</a></li>
+      </ul>
+    </div>
+  </div>
+  <!--Footer-->
+  <div id="footer">
+    <div class="footerBox">
+      <h3 class="footerBoxHeading">Brands</h3>
+      <ul id="brandsList">
+        <li>Nescafe</li>
+        <li>National Foods</li>
+        <li>Dawn</li>
+        <li>Nestle</li>
+        <li>Pepsi</li>
+        <li>Shan Foods</li>
+        <li>Olper</li>
+        <li>Rafhan</li>
+        <li>Bake Parlor</li>
+        <li>Uniliver</li>
+      </ul>
+    </div>
+    <div class="footerBox">
+      <h3 class="footerBoxHeading">Contact Us</h3>
+      <ul>
+        <li class="footerContainer">
+          <a class="footerLink" href="mailto:siddiquiyaminah2@gmail.com? subject=Mart Customer Email">
+            <div class="footerImageContainer"><img src="CHPImages\mail.png" alt="email Icon"></div>
+            <p class="linkText">siddiquiyaminah2@gmail.com</p>
+          </a>
+        </li>
+        <li class="footerContainer">
+          <a class="footerLink" href="mailto:bushraghaffar33@gmail.com? subject=Mart Customer Email">
+            <div class="footerImageContainer"><img src="CHPImages\mail.png" alt="email Icon"></div>
+            <p class="linkText">bushraghaffar33@gmail.com</p>
+          </a>
+        </li>
+        <li class="footerContainer">
+          <a class="footerLink" href="tel:+923317665690">
+            <div class="footerImageContainer"><img src="CHPImages\contact.png" alt="phone icon"></div>
+            <p class="linkText">+923317665690</p>
+          </a>
+        </li>
+        <li class="footerContainer">
+          <a class="footerLink" href="tel:+923317665690">
+            <div class="footerImageContainer"><img src="CHPImages\contact.png" alt="phone icon"></div>
+            <p class="linkText">+923317235690</p>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="footerBox">
+      <h3 class="footerBoxHeading">Follow Us</h3>
+      <ul>
+        <li id="followUsList">
+          <a href="#">
+            <div class="footerImageContainer"><img src="CHPImages\fb.png" alt="facebook icon"></div>
+          </a>
+          <a href="#">
+            <div class="footerImageContainer"><img src="CHPImages\insta.png" alt="instagram icon"></div>
+          </a>
+          <a href="#">
+            <div class="footerImageContainer"><img src="CHPImages\twitter.png" alt="twitter icon"></div>
+          </a>
+        </li>
+        <li id="logoInFooter">
+          <div id="logoFooterImg">
+            <img src="CHPImages\title.png" alt="Mart">
+          </div>
+          <h1 class="pageTitleHeading">Mart</h1>
+        </li>
+        <li id="websiteMotto">Shop from Home!</li>
+      </ul>
+    </div>
+  </div>
+  <!--Bottom Most Pane-->
+  <di id="bottomPane">
+    <ul>
+      <li class="bottomItems"><a href="#">Privacy Policy</a></li>
+      <li class="bottomItems">&copy; 2021 My Mart.com</li>
+      <li class="bottomItems"><a href="#">License & Agreement</a></li>
+      <li class="bottomItems"><a href="#">About Us</a></li>
+    </ul>
+  </di>
 </body>
-
+<script src="JavaScript\CHP.js">
+</script>
 </html>
