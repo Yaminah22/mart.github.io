@@ -13,161 +13,178 @@
 </head>
 
 <body>
+  <!--Search Bar-->
+  <!--This will only appear when search button is clicked-->
+  <div id="searchContainer" class="opacBackground">
+    <div id="searchCloseBtn" onclick="closeSearch()">X</div>
+    <form class="searchBarContainer" action="" method="">
+      <input class="searchBar" type="text" name="Search" placeholder="Search in Mart....">
+      <button id="SearchButton"><img src="CHPImages\searchBarButton.png" /></button>
+    </form>
+  </div>
   <!--Top Navigation Pane-->
   <div id="header">
-    <div class="Admin">
-    <p ><strong><a>Switch To Admin &nbsp</a></strong></p>
+    <div id="Admin">
+      <p><strong><a>Switch To Admin &nbsp</a></strong></p>
     </div>
     <div class="firstLine">
-      <ul>
-        <li>
-          <!--Logo and Title-->
-          <div id="pageTitle">
-            <a href="./customer_homePage.html">
-              <div id="logoImg">
-                <img src="CHPImages\title.png" alt="Mart">
-              </div>
-              <h1 class="pageTitleHeading">Mart</h1>
-            </a>
-          </div>
-        </li>
-        <li>
-          <!--Search Bar-->
-          <div class="searchBarContainer">
-            <form class="search" action="/action_page.php">
-              <input class="searchBar" type="text" name="SearchBar" placeholder="Find in Mart...">
-              <div id="Search-Button"><img src="CHPImages\search.png"></div>
-            </form>
-          </div>
-        </li>
-        <li>
-          <!--User Accounts icon-->
-          <div id="account_icon">
-            <div id="account_btn">
-              <img src="CHPImages\accountIcon.png">
+      <div id="pageTitleDiv">
+        <!--Hidden Menu Button-->
+        <button id="hiddenMenuButton" onclick="OpenhiddenMenu()"><img src="CHPImages\menu.png" />
+        </button>
+        <!--Logo and Title-->
+        <div id="pageTitle">
+          <a href="./customer_homePage.html">
+            <div id="logoImg">
+              <img src="CHPImages\title.png" alt="Mart">
             </div>
-            <p id="account_name">Guest</p>
-            <div id="account_dropdown">
-              <a href="./CustomerLogin.html" class="default">Login</a>
-              <a href="./CustomerSignup.html" class="default">Sign Up</a>
-              <a href="#" class="loggedIn">Log out</a>
-            </div>
-          </div>
-        </li>
-        <li>
-          <!--Cart Status-->
-          <div class="cart">
-            <a href="#">
-              <div id="cart_icon">
-                <img src="CHPImages\cartIcon.png">
-                <span id="cart_total">0</span>
-              </div>
-          </div>
+            <h1 class="pageTitleHeading">Mart</h1>
           </a>
-        </li>
-      </ul>
+        </div>
+      </div>
+      <div id="floatRight">
+        <!--Search Icon-->
+        <div id="searchIcon" onclick="openSearch()">
+          <img src="CHPImages\search.png">
+          <div id="search_dropdown">
+            Click to open Search
+          </div>
+        </div>
+        <!--User Accounts icon-->
+        <a href="./CustomerLogin.html" id="accountIcon">
+          <img src="CHPImages\accountIcon.png">
+          <div id="account_dropdown">
+          </div>
+        </a>
+        <!--Cart Status-->
+        <a href="#" id="cart_icon">
+          <img src="CHPImages\cartIcon.png">
+          <div id="cartDropdown">
+          </div>
+        </a>
+      </div>
     </div>
     <!--Main Navigation Bar-->
     <div id="navigationBar">
       <ul>
+        <li class="current"><a href="./customer_homePage.html">Home</a></li>
         <li><a href="#">Categories</a></li>
         <li><a href="#brands">Brands</a></li>
         <li><a href="#sales/discounts">Sales/Discount Offers</a></li>
         <li><a href="#myOrders">My Orders</a></li>
         <li><a href="#help">Help</a></li>
-        <li><a href="contactUs">Contact Us</a></li>
+        <li><a href="#contactUs">Contact Us</a></li>
       </ul>
     </div>
   </div>
-  <!--Categories Side Navigation-->
-  <div id="mainContainer">
-  <div class="categories_navigation">
-    <ul id="mainList">
-      <li>Bakery Items
-        <ul class="subList">
-          <li>Fresh Bread</li>
-          <li>Pastries</li>
-          <li>Buns</li>
-        </ul>
-      </li>
-      <li>Canned Goods
-        <ul class="subList">
-          <li>Soups</li>
-          <li>Fruits</li>
-          <li>Nuts</li>
-        </ul>
-      </li>
-      <li>Dairy Products
-        <ul class="subList">
-          <li>Eggs</li>
-          <li>Cheese</li>
-          <li>Milk</li>
-        </ul>
-      </li>
-      <li>Snacks
-        <ul class="subList">
-          <li>Cookies</li>
-          <li>Crackers</li>
-          <li>Chips</li>
-        </ul>
-      </li>
-      <li>Fresh Produces
-        <ul class="subList">
-          <li>Vegetables</li>
-          <li>Fruits</li>
-        </ul>
-      </li>
-      <li>Meat & Seafood
-        <ul class="subList">
-          <li>Chicken</li>
-          <li>Goat Meat</li>
-          <li>Fish</li>
-        </ul>
-      </li>
-      <li>Beverages
-        <ul class="subList">
-          <li>Juices</li>
-          <li>Carbonated Drinks</li>
-          <li>Energy Drinks</li>
-        </ul>
-      </li>
-      <li>Frozen Food
-        <ul class="subList">
-          <li>Ice Cream</li>
-          <li>Half Cooked</li>
-        </ul>
-      </li>
-      <li>Grains & Pasta
-        <ul class="subList">
-          <li>Flour</li>
-          <li>Spaghetti</li>
-          <li>Spices</li>
-        </ul>
-      </li>
+  <!--Hidden Side Navigation Menu-->
+  <div id="hiddenNavigationBar">
+    <div id="close"><button id="closeButton" onclick="ClosehiddenMenu()">Close X
+      </button></div>
+    <ul>
+      <li class="current"><a href="./customer_homePage.html">Home</a></li>
+      <li><a href="#">Categories</a></li>
+      <li><a href="#brands">Brands</a></li>
+      <li><a href="#sales/discounts">Sales/Discount Offers</a></li>
+      <li><a href="#myOrders">My Orders</a></li>
+      <li><a href="#help">Help</a></li>
+      <li><a href="contactUs">Contact Us</a></li>
     </ul>
   </div>
-  <!--Sales/Discounts' slide show -->
-  <div class="slide_container">
-    <div class="image_container fade">
-      <img src="CHPImages\slide1.jpg" class="slider_image">
+
+  <!--Categories Side Navigation-->
+  <div id="mainContainer">
+    <div class="categories_navigation">
+      <ul id="mainList">
+        <li>Bakery Items
+          <ul class="subList">
+            <li>Fresh Bread</li>
+            <li>Pastries</li>
+            <li>Buns</li>
+          </ul>
+        </li>
+        <li>Canned Goods
+          <ul class="subList">
+            <li>Soups</li>
+            <li>Fruits</li>
+            <li>Nuts</li>
+          </ul>
+        </li>
+        <li>Dairy Products
+          <ul class="subList">
+            <li>Eggs</li>
+            <li>Cheese</li>
+            <li>Milk</li>
+          </ul>
+        </li>
+        <li>Snacks
+          <ul class="subList">
+            <li>Cookies</li>
+            <li>Crackers</li>
+            <li>Chips</li>
+          </ul>
+        </li>
+        <li>Fresh Produces
+          <ul class="subList">
+            <li>Vegetables</li>
+            <li>Fruits</li>
+          </ul>
+        </li>
+        <li>Meat & Seafood
+          <ul class="subList">
+            <li>Chicken</li>
+            <li>Goat Meat</li>
+            <li>Fish</li>
+          </ul>
+        </li>
+        <li>Beverages
+          <ul class="subList">
+            <li>Juices</li>
+            <li>Carbonated Drinks</li>
+            <li>Energy Drinks</li>
+          </ul>
+        </li>
+        <li>Frozen Food
+          <ul class="subList">
+            <li>Ice Cream</li>
+            <li>Half Cooked</li>
+          </ul>
+        </li>
+        <li>Grains & Pasta
+          <ul class="subList">
+            <li>Flour</li>
+            <li>Spaghetti</li>
+            <li>Spices</li>
+          </ul>
+        </li>
+      </ul>
     </div>
-    <div class="image_container fade">
-      <img src="CHPImages\slide2.jpg" class="slider_image">
+    <!--Sales/Discounts' slide show -->
+    <div class="slidesAndDots">
+      <div class="slide_container">
+        <div class="image_container fade">
+          <img src="CHPImages\slide1.jpg" class="slider_image">
+        </div>
+        <div class="image_container fade">
+          <img src="CHPImages\slide2.jpg" class="slider_image">
+        </div>
+        <div class="image_container fade">
+          <img src="CHPImages\slide3.jpg" class="slider_image">
+        </div>
+        <div class="image_container fade">
+          <img src="CHPImages\slide4.jpg" class="slider_image">
+        </div>
+      </div>
+      <div id="dotContainer">
+        <span class="dot">.</span>
+        <span class="dot">.</span>
+        <span class="dot">.</span>
+        <span class="dot">.</span>
+      </div>
     </div>
-    <div class="image_container fade">
-      <img src="CHPImages\slide3.jpg" class="slider_image">
-    </div>
-    <div class="image_container fade">
-      <img src="CHPImages\slide4.jpg" class="slider_image">
-    </div>
+
   </div>
-</div>
-<div id="dotContainer">
-  <span class="dot"></span>
-  <span class="dot"></span>
-  <span class="dot"></span>
-  <span class="dot"></span>
-</div>
+
   <!--Most Popular-->
   <h2 class="level2Headings">Best Sellers</h2>
   <div id="bestSeller">
@@ -455,4 +472,5 @@
 </body>
 <script src="JavaScript\CHP.js">
 </script>
+
 </html>

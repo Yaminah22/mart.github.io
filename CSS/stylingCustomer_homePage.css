@@ -1,6 +1,7 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 body {
@@ -19,34 +20,46 @@ body {
   flex-direction: column;
   flex-wrap: wrap;
   background-image: linear-gradient(to right, rgb(252, 248, 244), rgb(252, 188, 123));
+  position: fixed;
 }
 
-.Admin {
+#Admin {
   color: rgb(140, 152, 221);
   font-size: 0.875em;
   font-family: Times New Roman;
   text-align: right;
   cursor: pointer;
   width: 100%;
+  padding-right: 1em;
 }
 
 .firstLine {
-  flex: 100%;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
 }
 
 .firstLine ul {
   list-style-type: none;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: space-around;
-  align-items: center;
+  display: inline-block;
+  width: 100%;
 }
 
 /*Main Title of Page*/
+#pageTitleDiv {
+  flex: 40%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  float: left;
+}
+
 #pageTitle {
-  display: inline-block;
-  width: 100%;
+  flex: 90%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  text-align: justify;
 }
 
 #pageTitle a {
@@ -55,8 +68,8 @@ body {
 
 /*logo Container*/
 #logoImg {
-  height: 3.75em;
-  width: 5.625em;
+  height: 4em;
+  width: 6em;
   display: inline-block;
 }
 
@@ -72,144 +85,215 @@ body {
 /*Site Name*/
 .pageTitleHeading {
   display: inline-block;
-  font-size: 50px;
+  font-size: 4em;
   font-family: magneto, papyrus;
   font-style: oblique;
   color: rgb(233, 112, 26);
   text-shadow: 1px 1px 1px rgb(3, 4, 4);
-  vertical-align: top;
 }
 
 .firstLine h1:hover {
   cursor: pointer;
 }
 
-/*Search Bar*/
-.searchBarContainer {
-  display: flex;
-  height: 3em;
-  width: 24em;
-  justify-content: flex-start;
-}
-
-#Search-Button {
-  height: 2.1em;
-  width: 2.1em;
-  border: 1px solid grey;
-  border-left: none;
-  cursor: pointer;
-  background-color: rgb(203, 197, 208);
-  display: inline-block;
-  vertical-align: bottom;
+#floatRight {
+  flex: 40%;
   float: right;
+  height: 53px;
+  min-width: 100px;
+  margin-bottom: 1em;
+  margin-top: 1em;
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: center;
 }
 
-#Search-Button img {
-  height: 100%;
+/*Search button (Icon)*/
+#searchIcon {
+  height: 2.3em;
+  width: 2.3em;
+  cursor: pointer;
+  margin: 1em;
+}
+
+#searchIcon img {
   width: 100%;
+  height: 100%;
+}
+
+#search_dropdown {
+  display: none;
+  position: absolute;
+  height: 4em;
+  min-width: 10em;
+  background-color: white;
+  z-index: 51;
+  box-shadow: 5px 5px 7px grey;
+  color: rgb(109, 113, 107);
+  padding: 10px 10px 10px 10px;
+  text-align: left;
+}
+
+#searchIcon:hover {
+  transform: scale(1.1, 1.1);
+}
+
+#searchIcon:hover #search_dropdown {
+  display: block;
+}
+
+/*Search Bar*/
+.opacBackground {
+  display: none;
+  height: 100vh;
+  width: 100vw;
+  z-index: 100;
+  background: rgba(48, 51, 49, 0.7);
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+#searchCloseBtn {
+  position: absolute;
+  top: 1em;
+  right: 6em;
+  font-size: 40px;
+  cursor: pointer;
+  color: white;
+  font-family: sans-serif;
+  text-align: center;
+}
+
+#searchCloseBtn:hover {
+  transform: scale(1.1, 1.1);
+}
+
+.searchBarContainer {
+  width: 70%;
+  position: relative;
+  top: 10%;
+  left: 5%;
+  text-align: center;
+  margin: auto;
+}
+
+#SearchButton {
+  height: 3.7em;
+  width: 10%;
+  cursor: pointer;
+  background: #ddd;
+  border: none;
+  float: left;
+  padding: 15px;
+}
+
+#SearchButton img {
+  height: 80%;
+  width: 50%;
+}
+
+#SearchButton:hover {
+  background-color: grey;
 }
 
 .searchBar {
-  padding: 5px;
-  font-size: 0.9375em;
-  width: 22.2em;
-  height: 1.5625em;
-  border: 1px solid grey;
-  display: inline-block;
-  vertical-align: bottom;
+  padding: 15px;
+  font-size: 17px;
+  width: 70%;
+  border: none;
+  float: left;
+  background: white;
+}
+
+.searchBar:hover {
+  background-color: #f1f1f1;
 }
 
 /*User Account*/
-#account_icon {
-  display: inline-block;
-  padding: 6px 4px 4px 6px;
-  height: 2.6em;
-  width: 7em;
-  font-family: inherit;
+#accountIcon {
+  text-decoration: none;
+  height: 2.3em;
+  width: 2.3em;
   cursor: pointer;
-  background-color: inherit;
+  margin: 1em;
 }
 
-#account_btn {
-  height: 2.5em;
-  width: 2.5em;
-  display: inline-block;
-}
-
-#account_btn img {
+#accountIcon img {
   height: 100%;
   width: 100%;
-}
-
-#account_name {
-  display: inline-block;
-  font-size: 0.9375em;
-  vertical-align: top;
-  padding: 10px 0px 10px 5px;
 }
 
 #account_dropdown {
   display: none;
   position: absolute;
-  min-width: 8em;
+  height: 4em;
+  max-width: 12em;
+  min-width: 10em;
   background-color: white;
   z-index: 51;
   box-shadow: 5px 5px 7px grey;
-}
-
-#account_dropdown a {
-  display: block;
-  color: black;
+  color: rgb(109, 113, 107);
   text-decoration: none;
   padding: 10px 10px 10px 10px;
+  word-wrap: break-word;
+  text-align: left;
 }
 
-#account_icon:hover #account_dropdown {
+#accountIcon:hover #account_dropdown {
   display: block;
 }
 
-#account_dropdown a:hover {
-  background-color: #ddd;
+#account_dropdown:hover {
+  background-color: rgb(238, 157, 54);
+  color: white;
 }
 
-#account_icon:hover {
-  background-color: rgb(238, 157, 54);
+#accountIcon:hover {
+  transform: scale(1.1, 1.1);
 }
 
 /*Cart Status*/
 #cart_icon {
-  display: flex;
-  justify-content: center;
-  height: 3em;
-  width: 3.8em;
+  height: 2.3em;
+  width: 2.3em;
+  cursor: pointer;
+  margin: 1em;
 }
 
 #cart_icon img {
-  height: 2.5em;
-  width: 2.8em;
+  height: 100%;
+  width: 100%;
 }
 
-#cart_total {
-  background-color: blue;
-  color: white;
-  font-size: 1.0em;
-  width: 1.10em;
-  height: 1.10em;
-  border-radius: 50%;
-  text-align: center;
-}
-
-.cart a {
+#cartDropdown {
+  display: none;
+  position: absolute;
+  height: 4em;
+  min-width: 8em;
+  background-color: white;
+  z-index: 51;
+  box-shadow: 5px 5px 7px grey;
+  color: rgb(109, 113, 107);
   text-decoration: none;
+  padding: 10px 10px 10px 10px;
+  word-wrap: break-word;
+  text-align: left;
+}
+
+#cart_icon:hover #cartDropdown {
+  display: block;
 }
 
 #cart_icon:hover {
-  background-color: rgb(238, 157, 54);
+  transform: scale(1.1, 1.1)
 }
 
 /*Top Navigation Bar*/
 #navigationBar {
-  flex: 100%;
+  width: 100%;
 }
 
 #navigationBar ul {
@@ -222,11 +306,20 @@ body {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
-  justify-content: center;
+  justify-content: space-around;
+  align-items: center;
+  z-index: 50;
 }
 
 #navigationBar li {
   border-right: 1px solid rgb(130, 125, 130);
+  flex: 10%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 2.4em;
 }
 
 #navigationBar li:last-child {
@@ -237,10 +330,8 @@ body {
   display: inline-block;
   text-decoration: none;
   color: black;
-  font-size: 1em;
+  font-size: 0.9em;
   font-family: Californian FB, Cambria;
-  padding: 10px 40px 10px 40px;
-  text-align: center;
 }
 
 #navigationBar a:hover {
@@ -251,25 +342,113 @@ body {
   background-color: rgb(238, 157, 54);
 }
 
+/*Fixed Navigation Bar This will only appear on small screens*/
+#hiddenMenuButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: none;
+  height: 40px;
+  flex: 9%;
+  margin-left: 2%;
+}
+
+#hiddenMenuButton img {
+  height: 80%;
+  width: 50%;
+}
+
+/*Hidden Side Navigation Pane*/
+#hiddenNavigationBar {
+  width: 90%;
+  margin: 2%;
+  border: none;
+  box-shadow: 0px 0px 2px grey;
+  display: block;
+  padding: 0.5em;
+  display: none;
+  z-index: 70;
+  position: fixed;
+  background-color: white;
+}
+
+#hiddenNavigationBar li {
+  font-size: 1em;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  word-wrap: none;
+  cursor: pointer;
+  text-transform: uppercase;
+  text-align: left;
+  border-bottom: 1px solid rgb(198, 84, 3);
+  padding: 1em;
+}
+
+#hiddenNavigationBar li:last-child {
+  border-bottom: none;
+}
+
+#hiddenNavigationBar li:first-child {
+  padding-top: 1.5em;
+}
+
+#hiddenNavigationBar li:hover {
+  background-color: rgb(231, 227, 215);
+}
+
+.current {
+  background-color: rgb(255, 195, 106);
+}
+
+#closeButton {
+  background: grey;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  height: 2em;
+  width: 5em;
+  font-size: 20px;
+  margin-bottom: 5px;
+  margin-top: 0;
+  padding: 0;
+  color: white;
+  font-family: Times New Roman;
+  padding: 0.5em;
+}
+
+#closeButton:hover {
+  transform: scale(1.1, 1.1);
+}
+
+#hiddenNavigationBar a {
+  text-decoration: none;
+  color: black;
+}
+
 /*Main body*/
 /*Side Categories Pane*/
 #mainContainer {
   display: flex;
-  flex-wrap: wrap;
   flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
   width: 100%;
   height: auto;
+  z-index: 10;
+  padding-top: 8.875em;
+  padding-left: 1em;
+  padding-right: 1em;
+  padding-bottom: 1em;
 }
 
 .categories_navigation {
-  height: 22.5em;
-  width: 15em;
-  margin-left: 5%;
-  margin-top: 2%;
+  height: 25em;
+  margin: 2%;
   border: none;
   box-shadow: 0px 0px 2px grey;
   float: left;
-  display: inline-block;
+  flex: 20%;
 }
 
 #mainList {
@@ -290,7 +469,7 @@ body {
   list-style-type: none;
   word-wrap: normal;
   display: block;
-  min-width: 15em;
+  min-width: 10em;
 }
 
 #mainList li:hover {
@@ -311,7 +490,7 @@ body {
 }
 
 .subList {
-  font-size: 15px;
+  font-size: 0.9375em;
   display: none;
   list-style-type: none;
   position: absolute;
@@ -327,38 +506,52 @@ body {
 }
 
 /*Sales and Discounts Slides*/
+.slidesAndDots {
+  flex: 80%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
 .slide_container {
-  display: inline-block;
+  flex: 80%;
   max-width: 800px;
   max-height: 400px;
-  margin-left: 4%;
-  margin-top: 2%;
+  margin: 1%;
 }
-.image_container img{
-  width:100%;
+
+.image_container img {
+  width: 100%;
 }
+
 .dot {
-  height: 14px;
-  width: 14px;
-  margin-left: 12px;
-  background-color: #bbb;
-  border-radius: 50%;
-  display: inline-block;
+  vertical-align: top;
+  font-size: 9vw;
+  font-family: sans-serif;
+  color: #bbb;
   transition: background-color 0.6s ease;
+  text-align: center;
 }
-#dotContainer{
-  margin-top: 1%;
+
+#dotContainer {
+  margin: 1%;
+  max-height: 1em;
+  width: 50%;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
-  margin-left:52%;
+  justify-content: flex-end;
+  align-items: center;
 }
+
 .active {
-  background-color: #717171;
+  color: #717171;
 }
+
 .image_container {
   display: none;
 }
+
 /* Fading animation */
 .fade {
   -webkit-animation-name: fade;
@@ -368,16 +561,26 @@ body {
 }
 
 @-webkit-keyframes fade {
-  from {opacity: .4}
-  to {opacity: 1}
+  from {
+    opacity: .4
+  }
+
+  to {
+    opacity: 1
+  }
 }
 
 @keyframes fade {
-  from {opacity: .4}
-  to {opacity: 1}
+  from {
+    opacity: .4
+  }
+
+  to {
+    opacity: 1
+  }
 }
 
-slide_container img {
+.slide_container img {
   vertical-align: middle;
 }
 
@@ -385,7 +588,7 @@ slide_container img {
 h2 {
   font-size: 2.5em;
   text-align: center;
-  margin: 4%;
+  margin: 3%;
 }
 
 .level2Headings {
@@ -402,11 +605,12 @@ h2 {
 }
 
 .horizontal_list_container {
-  width: 90%;
+  width: 100%;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .productCards a {
@@ -416,16 +620,15 @@ h2 {
 .productCards {
   max-width: 12em;
   max-height: 18.75em;
-  min-height: 15.625em;
-  min-width: 11.25em;
+  min-height: 15em;
+  min-width: 10em;
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
   justify-content: center;
   align-items: center;
   box-shadow: 0px 0px 5px grey;
-  margin-left: 2.20em;
-  margin-top: 10px;
+  margin: 15px;
   z-index: 2;
 }
 
@@ -604,8 +807,8 @@ h2 {
 
 .footerBox {
   flex: 30%;
-  margin-top: 0.5em;
-  margin-left: 1em;
+  margin-top: 1.5em;
+  margin-left: 1.5em;
   margin-bottom: 0.5em;
 }
 
@@ -718,57 +921,76 @@ h2 {
 /*Extra small devices 600px and down*/
 @media only screen and (max-width:600px) {
   #logoImg {
-    height: 3em;
-    width: 4em;
-  }
-
-  .firstLine li {
-    margin-left: 1em;
-    justify-content: space-around;
+    height: 2.5em;
+    width: 3em;
   }
 
   .pageTitleHeading {
-    font-size: 40px;
+    font-size: 35px;
   }
 
-  .searchBar {
-    display: none;
-    position: absolute;
-    font-size: 0.9em;
-    width: 15em;
+  #header {
+    box-shadow: 0px 2px 5px black;
+    height: 15%;
   }
 
-  .searchBarContainer {
-    width: 3em;
-    margin-left: 0%;
-    float: right;
-  }
-
-  #Search-Button {
-    border-left: 1px solid grey;
-    border-radius: 50%;
-  }
-
-  #Search-Button:hover .firstLine input[type=text] {
+  #hiddenMenuButton {
     display: block;
-    z-index: 55;
   }
 
-  #account_icon {
-    margin-left: 0%;
+  #navigationBar {
+    display: none;
   }
 
-  #account_icon img {
-    height: 2.1em;
-    width: 2.1em;
-  }
-
-  #cart_icon img {
-    height: 2.1em;
-    width: 2.1em;
+  #accountIcon {
+    margin: 0.2em;
   }
 
   #cart_icon {
-    float: right;
+    margin: 0.2em;
+  }
+
+  #searchIcon {
+    margin: 0.2em;
+  }
+
+  #mainContainer {
+    padding-top: 140px;
+  }
+
+  .categories_navigation {
+    display: none;
+  }
+
+  h2 {
+    font-size: 1.9em;
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) and (max-width:800px) {
+  .pageTitleHeading {
+    font-size: 50px;
+  }
+
+  #navigationBar a {
+    font-size: 0.7em;
+  }
+
+  #mainList {
+    font-size: 0.7em;
+    margin-left: 1%;
+  }
+
+  #subList {
+    font-size: 0.7em;
+  }
+
+  .categories_navigation {
+    height: 20em;
+  }
+
+  h2 {
+    font-size: 1.7em;
   }
 }
