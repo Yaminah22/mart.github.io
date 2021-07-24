@@ -1,0 +1,130 @@
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    
+    body {
+        overflow: hidden;
+        height: 100vh;
+        width: 100vw;
+        background-image: linear-gradient(to bottom right, rgba(250, 249, 249, 0), rgb(240, 143, 46), rgba(248, 235, 222, 0));
+    }
+    /*Container Div for everything*/
+    
+    #adminLogin {
+        box-shadow: 1px 1px 5px rgb(46, 43, 43);
+        margin-top: 5%;
+        margin-left: auto;
+        margin-right: auto;
+        width: 320px;
+        height: 75%;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        background-color: white;
+    }
+    /*logo Container*/
+    
+    #logoContainer {
+        margin-top: 30%;
+        width: 100%;
+        display: inline-block;
+        text-align: center;
+    }
+    
+    #logoImg {
+        height: 4em;
+        width: 6em;
+        display: inline-block;
+    }
+    
+    #logoImg img {
+        height: 100%;
+        width: 100%;
+    }
+    /*Site Name*/
+    
+    .pageHeading {
+        display: inline-block;
+        font-size: 3em;
+        font-family: magneto, papyrus;
+        font-style: oblique;
+        color: rgb(233, 112, 26);
+        text-shadow: 1px 1px 1px rgb(3, 4, 4);
+    }
+    
+    #loginFormTitle {
+        margin-top: 10px;
+        width: 100%;
+        font-size: 25px;
+        text-align: center;
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    }
+    /*styling containers for input fields and icon images*/
+    
+    .formClass {
+        width: 100%;
+        text-align: center;
+        margin-top: 10px;
+    }
+    
+    .inputField {
+        padding: 2px;
+        display: inline-block;
+        margin-top: 5px;
+    }
+    
+    .inputField [type=text] {
+        width: 200px;
+        height: 30px;
+        padding: 5px 0px 5px 0px;
+    }
+    
+    .inputField [type=password] {
+        width: 200px;
+        height: 30px;
+        padding: 5px 0px 5px 0px;
+    }
+    /*Image Icons for input fields*/
+    
+    .imgIcon {
+        height: 28px;
+        width: 25px;
+        padding-top: 5px;
+        margin-right: 2px;
+        margin-left: 2px;
+        float: left;
+    }
+    
+    .imgIcon img {
+        width: 100%;
+        height: 100%;
+    }
+    /*button and forget password*/
+    
+    .btn {
+        width: 100%;
+        margin-top: 10px;
+        text-align: center;
+    }
+    
+    .btn button {
+        padding: 5px;
+        font-size: 1em;
+        cursor: pointer;
+        background: rgba(241, 231, 220, 0.6);
+        border: none;
+    }
+    
+    .btn button:hover {
+        background-color: rgb(224, 125, 33);
+        color: snow;
+        transform: scale(1.1, 1.1);
+    }
+    
+    .forget {
+        width: 100%;
+        text-align: center;
+        margin-top: 5%;
+    }
