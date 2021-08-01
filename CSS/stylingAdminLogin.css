@@ -78,13 +78,13 @@
     .inputField [type=text] {
         width: 200px;
         height: 30px;
-        padding: 5px 0px 5px 0px;
+        padding: 5px 15px 5px 0px;
     }
     
     .inputField [type=password] {
         width: 200px;
         height: 30px;
-        padding: 5px 0px 5px 0px;
+        padding: 5px 15px 5px 0px;
     }
     /*Image Icons for input fields*/
     

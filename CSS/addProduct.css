@@ -1,0 +1,91 @@
+select:required:invalid {
+    color: #666;
+}
+
+option[value=""][disabled] {
+    display: none;
+}
+
+option {
+    color: #000;
+}
+
+.addDiv {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 4%;
+    text-align: center;
+    width: 300px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    box-shadow: 0px 0px 6px black;
+}
+
+.title {
+    margin-top: 2%;
+    margin-bottom: 2%;
+    padding: 2%;
+    text-transform: uppercase;
+    color: rgb(231, 134, 7);
+}
+
+.inputField {
+    width: 80%;
+    padding: 2%;
+    margin: 2%;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 2px solid rgb(233, 153, 5);
+    background-color: transparent;
+    outline: none;
+    resize: none;
+    color: #000;
+}
+
+.selectField {
+    width: 80%;
+    padding: 2%;
+    margin: 2%;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 2px solid rgb(233, 153, 5);
+    background-color: transparent;
+    outline: none;
+    resize: none;
+}
+
+label {
+    width: 80%;
+    color: #666;
+    padding: 2%;
+}
+
+#imageFile {
+    width: 80%;
+    color: #666;
+    padding: 2%;
+    text-align-last: center;
+    border-bottom: 2px solid rgb(233, 153, 5);
+}
+
+.btn {
+    margin: 4%;
+    padding: 3%;
+    border: none;
+    background-color: rgb(231, 134, 7);
+    color: white;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.btn:hover {
+    transform: scale(1.1, 1.1);
+    background-color: rgb(255, 205, 139);
+    color: black;
+}

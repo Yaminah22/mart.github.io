@@ -1,0 +1,55 @@
+#register {
+    width: 290px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    box-shadow: 0px 0px 6px black;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5%;
+    text-align: center;
+}
+
+#title {
+    margin-top: 5%;
+    margin-bottom: 4%;
+    padding: 2%;
+    text-transform: uppercase;
+    color: rgb(231, 134, 7);
+}
+
+.inputField {
+    width: 80%;
+    padding: 2%;
+    margin: 2%;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 2px solid rgb(233, 153, 5);
+    background-color: transparent;
+    outline: none;
+    resize: none;
+}
+
+.inputField:focus,
+.inputField:active {
+    background-color: whitesmoke;
+}
+
+.btn {
+    margin-top: 5%;
+    padding: 4%;
+    border: none;
+    background-color: rgb(231, 134, 7);
+    color: white;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.btn:hover {
+    transform: scale(1.1, 1.1);
+    background-color: rgb(255, 205, 139);
+    color: black;
+}

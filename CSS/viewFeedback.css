@@ -1,0 +1,46 @@
+.tableDiv {
+    width: 100%;
+    margin-top: 2%;
+    overflow: auto;
+    display: flex;
+}
+
+.title {
+    font-size: 25px;
+    margin-top: 2%;
+    margin-bottom: 1%;
+    text-transform: uppercase;
+    color: rgb(161, 93, 4);
+}
+
+.tb {
+    width: 100%;
+    border: 2px solid black;
+    empty-cells: hide;
+    align-items: center;
+}
+
+#firstRow th {
+    border-left: 1px solid grey;
+    padding: 2%;
+    font-size: 20px;
+    width: auto;
+}
+
+#firstRow th:first-child {
+    border-left: none;
+}
+
+tr:nth-child(even) {
+    background-color: #fcedda;
+}
+
+.dataRows td {
+    border-left: 1px solid grey;
+    padding: 6px 5px 6px 10px;
+    width: auto;
+}
+
+.dataRows td:first-child {
+    border-left: none;
+}
