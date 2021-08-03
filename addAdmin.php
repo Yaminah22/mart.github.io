@@ -34,10 +34,10 @@ if (!isset($_SESSION['LoggedInAdminName'])) {
             <li><i class="fas fa-plus-square fa-sm"></i>
                 Add Items
                 <ul class="subList">
-                <li onclick="location.href='addProduct.php'; ">Product</li>
+                    <li onclick="location.href='addProduct.php'; ">Product</li>
                     <li onclick="location.href='addBrand.php'; ">Brand</li>
                     <li onclick="location.href='addCategory.php'; ">Category</li>
-                    <li onclick="location.href='addAds.php'; ">Ad</li>
+                    <li onclick="location.href='addAds.php'; ">Advertisement</li>
                 </ul>
             </li>
             <li><i class="fas fa-pen-square fa-sm"></i>
@@ -52,13 +52,24 @@ if (!isset($_SESSION['LoggedInAdminName'])) {
                 <ul class="subList">
                     <li onclick="location.href='delete.php'; ">Product</li>
                     <li onclick="location.href='delete.php'; ">Brand</li>
-                    <li onclick="location.href='delete.php'; ">Ads</li>
+                    <li onclick="location.href='delete.php'; ">Advertisement</li>
                     <li onclick="location.href='delete.php'; ">Customers</li>
                     <li onclick="location.href='delete.php'; ">Admin</li>
                 </ul>
             </li>
-            <li onclick="location.href='feedback.php'; "><i class="fas fa-comment fa-sm"></i>
-                View Database</li>
+            <li><i class="fas fa-database fa-sm"></i>
+                View Database
+                <ul class="subList">
+                    <li onclick="location.href='productsDB.php'; ">Product</li>
+                    <li onclick="location.href='brandsDB.php'; ">Brand</li>
+                    <li onclick="location.href='adsDB.php'; ">Advertisement</li>
+                    <li onclick="location.href='categoriesDB.php'; ">Category</li>
+                    <li onclick="location.href='customersDB.php'; ">Customer</li>
+                    <li onclick="location.href='adminsDB.php'; ">Admin</li>
+                    <li onclick="location.href='ordersDB.php'; ">Order</li>
+
+                </ul>
+            </li>
             <li class="current" onclick="location.href='addAdmin.php'; ">
                 <i class="fas fa-user-plus fa-sm"></i>
                 Add Admin
@@ -105,12 +116,12 @@ if (!isset($_SESSION['LoggedInAdminName'])) {
     <?php
     if (isset($_POST['logout'])) {
         session_destroy();
-        echo"<script>window.location.href='Admin_Login.php';</script>";
+        echo "<script>window.location.href='Admin_Login.php';</script>";
     }
     ?>
 
     <?php
-    
+
     if (isset($_POST['signUp'])) {
         $user_exist_query = "SELECT * FROM `admin_accounts` WHERE admin_name='$_POST[name]' or admin_email='$_POST[email]'";
         $result = mysqli_query($con, $user_exist_query);
@@ -125,22 +136,21 @@ if (!isset($_SESSION['LoggedInAdminName'])) {
                     </script>";
                 }
                 #if email already exist
-                else{
+                else {
                     echo "<script>alert('$result_fetch[admin_email] - Email Already In Use!')
                     window.location.href='addAdmin.php';
                     </script>";
                 }
             }
             #if the entry is not repititive and can be inserted in database
-            else{
-                $query="INSERT INTO `admin_accounts`(`admin_name`, `admin_password`, `admin_email`) VALUES ('$_POST[name]','$_POST[password]','$_POST[email]')";
-                if(mysqli_query($con,$query)){
+            else {
+                $query = "INSERT INTO `admin_accounts`(`admin_name`, `admin_password`, `admin_email`) VALUES ('$_POST[name]','$_POST[password]','$_POST[email]')";
+                if (mysqli_query($con, $query)) {
                     #when registration is successful
                     echo "<script>alert('Sign Up Successful!')
                     window.location.href='addAdmin.php';
                     </script>";
-                }
-                else{
+                } else {
                     #when its not successful
                     echo "<script>alert('Cannot run Query')
                     window.location.href='addAdmin.php';

@@ -31,13 +31,13 @@ if (!isset($_SESSION['LoggedInAdminName'])) {
                 <i class="fas fa-home fa-sm"></i>
                 Dashboard
             </li>
-            <li class="current"><i class="fas fa-plus-square fa-sm" onclick="location.href='addItems.php'"></i>
+            <li class="current"><i class="fas fa-plus-square fa-sm"></i>
                 Add Items
                 <ul class="subList">
                     <li onclick="location.href='addProduct.php'; ">Product</li>
                     <li onclick="location.href='addBrand.php'; ">Brand</li>
                     <li onclick="location.href='addCategory.php'; ">Category</li>
-                    <li onclick="location.href='addAds.php'; ">Ad</li>
+                    <li onclick="location.href='addAds.php'; ">Advertisement</li>
                 </ul>
             </li>
             <li><i class="fas fa-pen-square fa-sm"></i>
@@ -52,12 +52,25 @@ if (!isset($_SESSION['LoggedInAdminName'])) {
                 <ul class="subList">
                     <li onclick="location.href='delete.php'; ">Product</li>
                     <li onclick="location.href='delete.php'; ">Brand</li>
+                    <li onclick="location.href='delete.php'; ">Advertisement</li>
+                    <li onclick="location.href='delete.php'; ">Customers</li>
+                    <li onclick="location.href='delete.php'; ">Admin</li>
                 </ul>
             </li>
-            <li><i class="fas fa-check-square fa-sm"></i>
-                Approve Orders</li>
-            <li onclick="location.href='feedback.php'; "><i class="fas fa-comment fa-sm"></i>
-                View Feedback</li>
+            <li><i class="fas fa-database fa-sm"></i>
+                View Database
+                <ul class="subList">
+                    <li onclick="location.href='productsDB.php'; ">Product</li>
+                    <li onclick="location.href='brandsDB.php'; ">Brand</li>
+                    <li onclick="location.href='adsDB.php'; ">Advertisement</li>
+                    <li onclick="location.href='categoriesDB.php'; ">Category</li>
+                    <li onclick="location.href='customersDB.php'; ">Customer</li>
+                    <li onclick="location.href='adminsDB.php'; ">Admin</li>
+                    <li onclick="location.href='ordersDB.php'; ">Order</li>
+
+                </ul>
+
+            </li>
             <li onclick="location.href='addAdmin.php'; ">
                 <i class="fas fa-user-plus fa-sm"></i>
                 Add Admin
@@ -89,62 +102,56 @@ if (!isset($_SESSION['LoggedInAdminName'])) {
             </div>
         </div>
         <!--Entry form-->
-    <div id="register">
-        <div class="addDiv">
-            <h2 class="title">Add Category</h2>
-            <form method="POST" enctype="multipart/form-data">
-            <input class="inputField" type="text" name="name" placeholder="Enter Category Name" required>
-            <label for="imageFile">Select Category Banner</label>
-            <input type="file" name="image" id="imageFile" required accept=".png, .jpg, .jpeg">
-            <button type="submit" name="addBtn" class="btn">Add Category</button>
-            </form>    
-        
-    </div>
-    </div>
-    <?php
-    if (isset($_POST['logout'])) {
-        session_destroy();
-        echo"<script>window.location.href='Admin_Login.php';</script>";
-    }
-    if(isset($_POST['addBtn']))
-    {
-        $query="SELECT * FROM `categories` WHERE `category_name`='$_POST[name]'";
-        $result=mysqli_query($con,$query);
-        if ($result)
-        {
-            if(mysqli_num_rows($result)>0)
-            {
-                echo "<script>alert('Category Already Exists!')
+        <div id="register">
+            <div class="addDiv">
+                <h2 class="title">Add Category</h2>
+                <form method="POST" enctype="multipart/form-data">
+                    <input class="inputField" type="text" name="name" placeholder="Enter Category Name" required>
+                    <label for="imageFile">Select Category Banner</label>
+                    <input type="file" name="image" id="imageFile" required accept=".png, .jpg, .jpeg">
+                    <button type="submit" name="addBtn" class="btn">Add Category</button>
+                </form>
+
+            </div>
+        </div>
+        <?php
+        if (isset($_POST['logout'])) {
+            session_destroy();
+            echo "<script>window.location.href='Admin_Login.php';</script>";
+        }
+        if (isset($_POST['addBtn'])) {
+            $query = "SELECT * FROM `categories` WHERE `category_name`='$_POST[name]'";
+            $result = mysqli_query($con, $query);
+            if ($result) {
+                if (mysqli_num_rows($result) > 0) {
+                    echo "<script>alert('Category Already Exists!')
                     window.location.href='addCategory.php';
                     </script>";
-            }
-            else{
-                $file=$_FILES['image']['name'];
-                $add="INSERT INTO `categories`( `category_name`, `image_large`) VALUES ('$_POST[name]','$file')";
-                $run=mysqli_query($con,$add);
-                if($run){
-                    if(move_uploaded_file($_FILES['image']['tmp_name'],"Categories/$file")){
-                        echo "<script>alert('New Category - $_POST[name] - Added Successfully!')
+                } else {
+                    $file = $_FILES['image']['name'];
+                    $add = "INSERT INTO `categories`( `category_name`, `image_large`) VALUES ('$_POST[name]','$file')";
+                    $run = mysqli_query($con, $add);
+                    if ($run) {
+                        if (move_uploaded_file($_FILES['image']['tmp_name'], "Categories/$file")) {
+                            echo "<script>alert('New Category - $_POST[name] - Added Successfully!')
                     window.location.href='addCategory.php';
                     </script>";
-                    }
-                    else{
-                        echo "<script>alert('Category Registration Failed!')
+                        } else {
+                            echo "<script>alert('Category Registration Failed!')
                     window.location.href='addCategory.php';
                     </script>";
+                        }
                     }
                 }
-            }
-        }
-        else{
-            echo "<script>alert('Cannot run Query')
+            } else {
+                echo "<script>alert('Cannot run Query')
                     window.location.href='addCategory.php';
                     </script>";
+            }
         }
-    }
-    ?>
+        ?>
     </div>
-        
+
 </body>
 
 </html>

@@ -34,18 +34,18 @@ while ($rows = mysqli_fetch_array($product)) {
     <!--Dividing the whole page into two divs one will contain the fixed side panel and the other will have the content of the option selected from the side panel-->
     <div id="sidePanel">
         <ul id="sideNavList">
-            <li>
-                <i class="fas fa-home fa-sm" onclick="location.href='AdminPanel.php'; "></i>
+            <li onclick="location.href='AdminPanel.php'; ">
+                <i class="fas fa-home fa-sm"></i>
                 Dashboard
             </li>
-            <li><i class="fas fa-plus-square fa-sm" onclick="location.href='addItems.php'"></i>
+            <li><i class="fas fa-plus-square fa-sm"></i>
                 Add Items
                 <ul class="subList">
-                     <li onclick="location.href='delete.php'; ">Product</li>
+                    <li onclick="location.href='delete.php'; ">Product</li>
                     <li onclick="location.href='delete.php'; ">Brand</li>
-                    <li onclick="location.href='delete.php'; ">Ads</li>
+                    <li onclick="location.href='delete.php'; ">Advertisement</li>
                     <li onclick="location.href='delete.php'; ">Customers</li>
-                    <li onclick="location.href='delete.php'; ">Admin</li>    
+                    <li onclick="location.href='delete.php'; ">Admin</li>
                 </ul>
             </li>
             <li class="current"><i class="fas fa-pen-square fa-sm"></i>
@@ -60,10 +60,25 @@ while ($rows = mysqli_fetch_array($product)) {
                 <ul class="subList">
                     <li onclick="location.href='delete.php'; ">Product</li>
                     <li onclick="location.href='delete.php'; ">Brand</li>
+                    <li onclick="location.href='delete.php'; ">Advertisement</li>
+                    <li onclick="location.href='delete.php'; ">Customers</li>
+                    <li onclick="location.href='delete.php'; ">Admin</li>
                 </ul>
             </li>
-            <li onclick="location.href='feedback.php'; "><i class="fas fa-comment fa-sm"></i>
-                View Database</li>
+            <li><i class="fas fa-database fa-sm"></i>
+                View Database
+                <ul class="subList">
+                    <li onclick="location.href='productsDB.php'; ">Product</li>
+                    <li onclick="location.href='brandsDB.php'; ">Brand</li>
+                    <li onclick="location.href='adsDB.php'; ">Advertisement</li>
+                    <li onclick="location.href='categoriesDB.php'; ">Category</li>
+                    <li onclick="location.href='customersDB.php'; ">Customer</li>
+                    <li onclick="location.href='adminsDB.php'; ">Admin</li>
+                    <li onclick="location.href='ordersDB.php'; ">Order</li>
+
+                </ul>
+            </li>
+
             <li onclick="location.href='addAdmin.php'; ">
                 <i class="fas fa-user-plus fa-sm"></i>
                 Add Admin

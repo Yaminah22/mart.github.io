@@ -1,0 +1,85 @@
+.tableDiv {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    overflow-y: scroll;
+}
+
+.tableDiv h3 {
+    font-size: 2em;
+    font-family: Bookman, URW Bookman L, serif;
+    font-weight: 200;
+    font-variant: small-caps;
+    padding: 1%;
+    border-bottom: 1px solid rgb(201, 121, 1);
+}
+
+.tableLarge {
+    border-collapse: collapse;
+    width: 99%;
+    min-width: 320px;
+    font-family: Didot, serif;
+    margin-top: 2em;
+    margin-left: 0.3em;
+    margin-right: 0.3em;
+}
+
+.tableLarge thead tr {
+    font-size: 1.1em;
+    text-align: center;
+    font-variant: small-caps;
+    border-bottom: 1px solid rgb(146, 146, 144);
+    background-color: rgb(238, 144, 4);
+    color: white;
+}
+
+.tableLarge thead tr th {
+    padding: 1%;
+    width: auto;
+}
+
+.tableLarge tbody tr {
+    font-size: 1em;
+    text-align: center;
+    border-bottom: 1px solid rgb(146, 146, 144);
+    word-wrap: break-word;
+}
+
+.tableLarge tbody tr td {
+    width: auto;
+    padding: 4px;
+    text-align: center;
+}
+
+.tableSmall {
+    border-collapse: collapse;
+    margin-top: 1em;
+    margin-left: 0.3em;
+    margin-right: 0.3em;
+    width: 99%;
+}
+
+.tableSmall thead tr {
+    font-size: 1em;
+    text-align: center;
+    font-variant: small-caps;
+    border-bottom: 1px solid rgb(146, 146, 144);
+}
+
+.tableSmall thead tr th {
+    padding: 1%;
+    width: auto;
+}
+
+.tableSmall tbody tr {
+    font-size: 0.9em;
+    text-align: center;
+    border-bottom: 1px solid rgb(146, 146, 144);
+    word-wrap: break-word;
+}
+
+.tableSmall tbody tr td {
+    width: auto;
+    padding: 1%;
+}

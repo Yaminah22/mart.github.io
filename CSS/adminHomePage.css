@@ -10,8 +10,6 @@ body {
     margin-top: 0px;
     height: 100vh;
     width: 100vw;
-    background-color: rgb(252, 250, 250);
-    background-image: radial-gradient( circle at bottom right, rgb(253, 140, 10), #fdfdfd 20%);
 }
 
 ::-webkit-scrollbar {
@@ -218,12 +216,12 @@ body {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    font-size: 20px;
-    padding: 30px 30px 30px 30px;
+    font-size: 1.2em;
     font-family: Californian FB;
     color: black;
     transition: all 0.2s;
     cursor: pointer;
+    padding: 20px;
 }
 
 .linkDivsImage {

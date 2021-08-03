@@ -1,5 +1,5 @@
 <?php
-	require("connections.php");
+require("connections.php");
 ?>
 
 <!doctype html>
@@ -16,9 +16,9 @@
 </head>
 
 <body>
-        <div class="customer">
-            <a href="customer_homePage.php">Switch to Customer</a>
-        </div>
+    <div class="customer">
+        <a href="index.php">Switch to Customer</a>
+    </div>
     <!--Creating login form-->
     <div id="adminLogin">
         <div id="logoContainer">
@@ -52,25 +52,22 @@
                 <a href="forgetPassword.php">Forgot Password?</a>
             </div>
         </form>
-        
+
     </div>
     <?php
-    if(isset($_POST['signIn']))
-    {
-       $query="SELECT * FROM `admin_accounts` WHERE admin_name='$_POST[adminName]' AND admin_password='$_POST[adminPassword]'";
-       $result=mysqli_query($con,$query);
-       if(mysqli_num_rows($result)==1)
-       {
+    if (isset($_POST['signIn'])) {
+        $query = "SELECT * FROM `admin_accounts` WHERE admin_name='$_POST[adminName]' AND admin_password='$_POST[adminPassword]'";
+        $result = mysqli_query($con, $query);
+        if (mysqli_num_rows($result) == 1) {
             session_start();
-            $_SESSION['LoggedInAdminName']=$_POST['adminName'];
+            $_SESSION['LoggedInAdminName'] = $_POST['adminName'];
             header("location: AdminPanel.php");
-       }
-       else{
-           echo "<script>alert('Incorrect Admin Name or Password!'); </script>";
-       }
+        } else {
+            echo "<script>alert('Incorrect Admin Name or Password!'); </script>";
+        }
     }
 
-?>
+    ?>
 </body>
 
 </html>

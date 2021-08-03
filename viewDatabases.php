@@ -9,7 +9,7 @@ if (!isset($_SESSION['LoggedInAdminName'])) {
 ?>
 
 <head>
-    <title>Update Items</title>
+    <title>View Databases</title>
     <meta name="description" content="Online Grocery Store" />
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" charset="utf-8">
@@ -37,7 +37,7 @@ if (!isset($_SESSION['LoggedInAdminName'])) {
                     <li onclick="location.href='addAds.php'; ">Advertisement</li>
                 </ul>
             </li>
-            <li class="current"><i class="fas fa-pen-square fa-sm"></i>
+            <li><i class="fas fa-pen-square fa-sm"></i>
                 Update Items
                 <ul class="subList">
                     <li onclick="location.href='updateQuantity.php'; ">Quantity</li>
@@ -54,8 +54,8 @@ if (!isset($_SESSION['LoggedInAdminName'])) {
                     <li onclick="location.href='delete.php'; ">Admin</li>
                 </ul>
             </li>
-            <li><i class="fas fa-database fa-sm"></i>
-                View Database
+            <li class="current"><i class="fas fa-database fa-sm"></i>
+                View Databases
                 <ul class="subList">
                     <li onclick="location.href='productsDB.php'; ">Product</li>
                     <li onclick="location.href='brandsDB.php'; ">Brand</li>
@@ -64,10 +64,7 @@ if (!isset($_SESSION['LoggedInAdminName'])) {
                     <li onclick="location.href='customersDB.php'; ">Customer</li>
                     <li onclick="location.href='adminsDB.php'; ">Admin</li>
                     <li onclick="location.href='ordersDB.php'; ">Order</li>
-
                 </ul>
-            </li>
-
             <li onclick="location.href='addAdmin.php'; ">
                 <i class="fas fa-user-plus fa-sm"></i>
                 Add Admin
@@ -97,19 +94,37 @@ if (!isset($_SESSION['LoggedInAdminName'])) {
                     </button>
                 </form>
             </div>
-        </div>
 
-    </div>
-    <div class="rightPanelSubDivs">
-        <!--All options-->
-        <div class="linkDivs" onclick="location.href='updatePrice.php'; ">
-            <i class="fas fa-dollar-sign fa-2x"></i>Update Price
         </div>
-        <div class="linkDivs" onclick="location.href='updateQuantity.php'; ">
-            <i class="fas fa-edit fa-2x"></i>
-            Update Quantity
+        <div class="rightPanelSubDivs">
+            <div class="linkDivs" onclick="location.href='productsDB.php'; ">
+                <i class="fas fa-paste fa-2x"></i>Product Table
+            </div>
+            <div class="linkDivs" onclick="location.href='brandsDB.php'; ">
+                <i class="fas fa-star fa-2x"></i>
+                Brand Table
+            </div>
+            <div class="linkDivs" onclick="location.href='adsDB.php'; ">
+                <i class="fas fa-image fa-2x"></i>
+                Advertisement Table
+            </div>
+            <div class="linkDivs" onclick="location.href='categoriesDB.php'; ">
+                <i class="far fa-object-group fa-2x"></i>
+                Category Table
+            </div>
+            <div class="linkDivs" onclick="location.href='customersDB.php'; ">
+                <i class="fas fa-user-friends fa-2x"></i>
+                Customer Table
+            </div>
+            <div class="linkDivs" onclick="location.href='adminsDB.php'; ">
+                <i class="fas fa-users-cog fa-2x"></i>
+                Admin Table
+            </div>
+            <div class="linkDivs" onclick="location.href='ordersDB.php'; ">
+                <i class="fas fa-truck fa-2x"></i>
+                Order Table
+            </div>
         </div>
-
     </div>
     <?php
     if (isset($_POST['logout'])) {

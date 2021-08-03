@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins',sans-serif;
+}
+.contact{
+  position:relative;
+  min-height: 100vh;
+  padding-top: 125px;
+  display: flex;
+  justify-content:center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #997950;
+  background-size: cover;
+}
+.contact .content{
+  max-width: 800px;
+  text-align: center;
+}
+.contact .content h2{
+  font-size: 36px;
+  font-weight: 500;
+  color: #fff;
+}
+.contact .content h3{
+  font-weight: 500;
+  color: #ff8c00;
+}
+.contact .content p{
+  font-weight: 300;
+  color: #fff;
+}
+.container{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+}
+.container  .contactInfo{
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+}
+.container  .contactInfo .box{
+  position: relative;
+  padding: 20px 0;
+  display:flex;
+}
+.container  .contactInfo .box .text{
+  display: flex;
+  margin-left: 20px;
+  font-size: 16px;
+  color: #fff;
+  flex-direction: column;
+  font-weight: 300;
+}
+.container  .contactInfo .box .text h3{
+  font-weight: 500;
+  color: #ff8c00;
+}
+@media (max-width:991px){
+      .contact
+      {
+        padding: 50px;
+      }
+      .container
+      {
+        flex-direction: column;
+      }
+      .container .contactInfo
+      {
+        margin-bottom: 40px;
+      }
+        .container .contactInfo,
+        .contactForm
+        {
+          width: 100%;
+        }
+}
+
+.form-container {
+  background: #fff;
+  width: 340px;
+  height: 400px;
+  position: relative;
+  text-align: center;
+  padding: 20px 0;
+  margin: auto;
+  border-radius: 9px;
+  box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.1);
+}
+
+.form-container span {
+  font-weight: bold;
+  font-style: italic;
+  font-size: 25px;
+  padding: 0 15px;
+  font-family: Times new roman;
+  color: #555;
+  width: 200px;
+  display: inline-block;
+}
+
+.form-btn {
+  display: inline-block;
+}
+
+.form-container form {
+  max-width: 300px;
+  padding: 0 20px;
+  position: absolute;
+  top: 130px;
+
+}
+
+form input {
+  width: 300px;
+  height: 40px;
+  margin: 10px 0;
+  padding: 0 10px;
+  border: 1px solid #ccc;
+}
+form textarea {
+  width: 300px;
+  height: 60px;
+  margin: 10px 0;
+  padding: 0 10px;
+  border: 1px solid #ccc;
+}
+form .btn {
+  width: 300px;
+  height: 30px;
+  border: none;
+  background-color: orange;
+  cursor: pointer;
+  margin: 10px 0;
+}

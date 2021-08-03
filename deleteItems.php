@@ -34,7 +34,7 @@ if (!isset($_SESSION['LoggedInAdminName'])) {
                     <li onclick="location.href='addProduct.php'; ">Product</li>
                     <li onclick="location.href='addBrand.php'; ">Brand</li>
                     <li onclick="location.href='addCategory.php'; ">Category</li>
-                    <li onclick="location.href='addAds.php'; ">Ad</li>
+                    <li onclick="location.href='addAds.php'; ">Advertisement</li>
                 </ul>
             </li>
             <li><i class="fas fa-pen-square fa-sm"></i>
@@ -47,15 +47,26 @@ if (!isset($_SESSION['LoggedInAdminName'])) {
             <li class="current"><i class="fas fa-trash fa-sm"></i>
                 Delete Items
                 <ul class="subList">
-                <li onclick="location.href='delete.php'; ">Product</li>
+                    <li onclick="location.href='delete.php'; ">Product</li>
                     <li onclick="location.href='delete.php'; ">Brand</li>
-                    <li onclick="location.href='delete.php'; ">Ads</li>
+                    <li onclick="location.href='delete.php'; ">Advertisement</li>
                     <li onclick="location.href='delete.php'; ">Customers</li>
                     <li onclick="location.href='delete.php'; ">Admin</li>
                 </ul>
             </li>
-            <li onclick="location.href='feedback.php'; "><i class="fas fa-comment fa-sm"></i>
-                View Feedback</li>
+            <li><i class="fas fa-database fa-sm"></i>
+                View Database
+                <ul class="subList">
+                    <li onclick="location.href='productsDB.php'; ">Product</li>
+                    <li onclick="location.href='brandsDB.php'; ">Brand</li>
+                    <li onclick="location.href='adsDB.php'; ">Advertisement</li>
+                    <li onclick="location.href='categoriesDB.php'; ">Category</li>
+                    <li onclick="location.href='customersDB.php'; ">Customer</li>
+                    <li onclick="location.href='adminsDB.php'; ">Admin</li>
+                    <li onclick="location.href='ordersDB.php'; ">Order</li>
+
+                </ul>
+            </li>
             <li onclick="location.href='addAdmin.php'; ">
                 <i class="fas fa-user-plus fa-sm"></i>
                 Add Admin
@@ -93,31 +104,31 @@ if (!isset($_SESSION['LoggedInAdminName'])) {
                 <i class="fas fa-trash fa-2x"></i>
                 Delete Products
             </div>
-        <div class="linkDivs" onclick="location.href='delete.php'; ">
-        <i class="fas fa-backspace fa-2x"></i>
-            Delete Brands
-        </div>
-        <div class="linkDivs" onclick="location.href='delete.php'; ">
-            <i class="fas fa-eraser fa-2x"></i>
-            Delete Ads
-        </div>
-        <div class="linkDivs" onclick="location.href='delete.php'; ">
-            <i class="fas fa-user-times fa-2x"></i>
-            Delete Customers
-        </div>
-        <div class="linkDivs" onclick="location.href='delete.php'; ">
-            <i class="fas fa-user-slash fa-2x"></i>
-            Delete Admin
-        </div>
+            <div class="linkDivs" onclick="location.href='delete.php'; ">
+                <i class="fas fa-backspace fa-2x"></i>
+                Delete Brands
+            </div>
+            <div class="linkDivs" onclick="location.href='delete.php'; ">
+                <i class="fas fa-eraser fa-2x"></i>
+                Delete Ads
+            </div>
+            <div class="linkDivs" onclick="location.href='delete.php'; ">
+                <i class="fas fa-user-times fa-2x"></i>
+                Delete Customers
+            </div>
+            <div class="linkDivs" onclick="location.href='delete.php'; ">
+                <i class="fas fa-user-slash fa-2x"></i>
+                Delete Admin
+            </div>
 
 
-    </div>
-    <?php
-    if (isset($_POST['logout'])) {
-        session_destroy();
-        echo "<script>window.location.href='Admin_Login.php';</script>";
-    }
-    ?>
+        </div>
+        <?php
+        if (isset($_POST['logout'])) {
+            session_destroy();
+            echo "<script>window.location.href='Admin_Login.php';</script>";
+        }
+        ?>
 </body>
 
 </html>

@@ -20,24 +20,24 @@ if (!isset($_SESSION['LoggedInAdminName'])) {
     <link rel="icon" href="CHPImages\logo.ico" type="image/x-icon">
     <script defer src="fontawesome/js/all.js"></script>
     <script src="https://use.fontawesome.com/92d2dff442.js"></script>
-    
+
 </head>
 
 <body>
     <!--Dividing the whole page into two divs one will contain the fixed side panel and the other will have the content of the option selected from the side panel-->
     <div id="sidePanel">
         <ul id="sideNavList">
-            <li onclick="location.href='./AdminPanel.php'; ">
+            <li onclick="location.href='AdminPanel.php'; ">
                 <i class="fas fa-home fa-sm"></i>
                 Dashboard
             </li>
-            <li class="current"><i class="fas fa-plus-square fa-sm" onclick="location.href='addItems.php'"></i>
+            <li class="current"><i class="fas fa-plus-square fa-sm"></i>
                 Add Items
                 <ul class="subList">
                     <li onclick="location.href='addProduct.php'; ">Product</li>
                     <li onclick="location.href='addBrand.php'; ">Brand</li>
                     <li onclick="location.href='addCategory.php'; ">Category</li>
-                    <li onclick="location.href='addAds.php'; ">Ad</li>
+                    <li onclick="location.href='addAds.php'; ">Advertisement</li>
                 </ul>
             </li>
             <li><i class="fas fa-pen-square fa-sm"></i>
@@ -50,17 +50,28 @@ if (!isset($_SESSION['LoggedInAdminName'])) {
             <li><i class="fas fa-trash fa-sm"></i>
                 Delete Items
                 <ul class="subList">
-                <li onclick="location.href='delete.php'; ">Product</li>
+                    <li onclick="location.href='delete.php'; ">Product</li>
                     <li onclick="location.href='delete.php'; ">Brand</li>
-                    <li onclick="location.href='delete.php'; ">Ads</li>
+                    <li onclick="location.href='delete.php'; ">Advertisement</li>
                     <li onclick="location.href='delete.php'; ">Customers</li>
                     <li onclick="location.href='delete.php'; ">Admin</li>
                 </ul>
             </li>
-            
-            <li onclick="location.href='feedback.php'; "><i class="fas fa-comment fa-sm"></i>
-                View Database</li>
-            <li  onclick="location.href='addAdmin.php'; ">
+
+            <li><i class="fas fa-database fa-sm"></i>
+                View Database
+                <ul class="subList">
+                    <li onclick="location.href='productsDB.php'; ">Product</li>
+                    <li onclick="location.href='brandsDB.php'; ">Brand</li>
+                    <li onclick="location.href='adsDB.php'; ">Advertisement</li>
+                    <li onclick="location.href='categoriesDB.php'; ">Category</li>
+                    <li onclick="location.href='customersDB.php'; ">Customer</li>
+                    <li onclick="location.href='adminsDB.php'; ">Admin</li>
+                    <li onclick="location.href='ordersDB.php'; ">Order</li>
+
+                </ul>
+            </li>
+            <li onclick="location.href='addAdmin.php'; ">
                 <i class="fas fa-user-plus fa-sm"></i>
                 Add Admin
             </li>
@@ -93,51 +104,45 @@ if (!isset($_SESSION['LoggedInAdminName'])) {
         <div class="addDiv">
             <h2 class="title">Add Brand</h2>
             <form method="POST" enctype="multipart/form-data">
-            <input class="inputField" type="text" name="name" placeholder="Brand Name" required>
-            <input class="inputField" type="number" name="brandProducts" placeholder="No of Products" required>
-            <label for="imageFile">Select Product Image</label>
-            <input type="file" name="image" id="imageFile" required accept=".png, .jpg, .jpeg">
-            <button type="submit" name="addBrand" class="btn">Add Brand</button>
-            </form>    
-        
+                <input class="inputField" type="text" name="name" placeholder="Brand Name" required>
+                <input class="inputField" type="number" name="brandProducts" placeholder="No of Products" required>
+                <label for="imageFile">Select Product Image</label>
+                <input type="file" name="image" id="imageFile" required accept=".png, .jpg, .jpeg">
+                <button type="submit" name="addBrand" class="btn">Add Brand</button>
+            </form>
+
         </div>
     </div>
     <?php
     if (isset($_POST['logout'])) {
         session_destroy();
-        echo"<script>window.location.href='Admin_Login.php';</script>";
+        echo "<script>window.location.href='Admin_Login.php';</script>";
     }
-    if(isset($_POST['addBrand']))
-    {
-        $query="SELECT * FROM `brands` WHERE brand_name='$_POST[name]'";
-        $result=mysqli_query($con,$query);
-        if ($result)
-        {
-            if(mysqli_num_rows($result)>0)
-            {
+    if (isset($_POST['addBrand'])) {
+        $query = "SELECT * FROM `brands` WHERE brand_name='$_POST[name]'";
+        $result = mysqli_query($con, $query);
+        if ($result) {
+            if (mysqli_num_rows($result) > 0) {
                 echo "<script>alert('Brand Already Registered!')
                     window.location.href='addBrand.php';
                     </script>";
-            }
-            else{
-                $file=$_FILES['image']['name'];
-                $add="INSERT INTO `brands`(`brand_name`, `no_of_products`, `brand_image`) VALUES ('$_POST[name]','$_POST[brandProducts]','$file')";
-                $run=mysqli_query($con,$add);
-                if($run){
-                    if(move_uploaded_file($_FILES['image']['tmp_name'],"Brands/$file")){
+            } else {
+                $file = $_FILES['image']['name'];
+                $add = "INSERT INTO `brands`(`brand_name`, `no_of_products`, `brand_image`) VALUES ('$_POST[name]','$_POST[brandProducts]','$file')";
+                $run = mysqli_query($con, $add);
+                if ($run) {
+                    if (move_uploaded_file($_FILES['image']['tmp_name'], "Brands/$file")) {
                         echo "<script>alert('New Brand - $_POST[name] - Registered Successfully!')
                     window.location.href='addBrand.php';
                     </script>";
-                    }
-                    else{
+                    } else {
                         echo "<script>alert('Brand Registration Failed!')
                     window.location.href='addBrand.php';
                     </script>";
                     }
                 }
             }
-        }
-        else{
+        } else {
             echo "<script>alert('Cannot run Query')
                     window.location.href='addBrand.php';
                     </script>";

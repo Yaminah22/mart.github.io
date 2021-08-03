@@ -19,17 +19,6 @@ function showSlides() {
     dots[slideIndex - 1].className += " active";
     setTimeout(showSlides, 4000);
 }
-/*Account Details Function*/
-var loginStatus = false;
-accountDetails();
-
-function accountDetails() {
-    if (loginStatus == true) {
-
-    } else {
-        document.getElementById("account_dropdown").innerHTML = "Click Here to Login or Create Account!";
-    }
-}
 
 
 /*Hidden Menu*/

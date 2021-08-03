@@ -384,7 +384,7 @@ class SMTP
         if ($streamok) {
             $socket_context = stream_context_create($options);
             set_error_handler([$this, 'errorHandler']);
-            $connection = stream_socket_client(
+            $conection = stream_socket_client(
                 $host . ':' . $port,
                 $errno,
                 $errstr,
@@ -400,7 +400,7 @@ class SMTP
                 self::DEBUG_CONNECTION
             );
             set_error_handler([$this, 'errorHandler']);
-            $connection = fsockopen(
+            $conection = fsockopen(
                 $host,
                 $port,
                 $errno,
@@ -411,7 +411,7 @@ class SMTP
         }
 
         //Verify we connected properly
-        if (!is_resource($connection)) {
+        if (!is_resource($conection)) {
             $this->setError(
                 'Failed to connect to server',
                 '',
@@ -435,10 +435,10 @@ class SMTP
             if (0 !== $max && $timeout > $max && strpos(ini_get('disable_functions'), 'set_time_limit') === false) {
                 @set_time_limit($timeout);
             }
-            stream_set_timeout($connection, $timeout, 0);
+            stream_set_timeout($conection, $timeout, 0);
         }
 
-        return $connection;
+        return $conection;
     }
 
     /**

@@ -53,27 +53,25 @@
     }
     ?>
     <?php
-        #Changing password 
-        if(isset($_POST['resetPassword']))
-        {
-            $update="UPDATE `admin_accounts` SET `admin_password`='$_POST[password]',`reset_code`=NULL,`reset_code_expiry`=NULL WHERE admin_email='$_POST[email]'";
-            $run=mysqli_query($con,$update);
-            if($run){
-                echo"
+    #Changing password 
+    if (isset($_POST['resetPassword'])) {
+        $update = "UPDATE `admin_accounts` SET `admin_password`='$_POST[password]',`reset_code`=NULL,`reset_code_expiry`=NULL WHERE admin_email='$_POST[email]'";
+        $run = mysqli_query($con, $update);
+        if ($run) {
+            echo "
                 <script>
                     alert('Password Updated Successfully!')
                     window.location.href='Admin_Login.php'
                 </script>
                 ";
-            }
-            else{
-                echo"<script>
+        } else {
+            echo "<script>
                 alert('Query Error')
                 window.location.href='Admin_Login.php'
             </script>";
-            }
         }
-    
+    }
+
     ?>
 
 </body>

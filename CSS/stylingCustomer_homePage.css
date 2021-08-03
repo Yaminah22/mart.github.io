@@ -93,7 +93,7 @@ body {
 
 .pageTitleHeading {
     display: inline-block;
-    font-size: 4em;
+    font-size: 3em;
     font-family: magneto, papyrus;
     font-style: oblique;
     color: rgb(233, 112, 26);
@@ -258,11 +258,6 @@ body {
 
 #accountIcon:hover #account_dropdown {
     display: block;
-}
-
-#account_dropdown:hover {
-    background-color: rgb(238, 157, 54);
-    color: white;
 }
 
 #accountIcon:hover {

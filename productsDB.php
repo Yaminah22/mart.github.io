@@ -2,33 +2,31 @@
 <html>
 
 <?php
-require("connections.php");
+require('connections.php');
 session_start();
 if (!isset($_SESSION['LoggedInAdminName'])) {
     header("location: Admin_Login.php");
 }
-
 ?>
 
 <head>
-    <title>View Feedback</title>
+    <title>Products Table</title>
     <meta name="description" content="Online Grocery Store" />
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" charset="utf-8">
     <meta name="HandheldFriendly" content="true">
     <link rel="stylesheet" type="text/css" href="CSS\adminHomePage.css">
-    <link rel="stylesheet" type="text/css" href="CSS\viewFeedback.css">
+    <link rel="stylesheet" type="text/css" href="CSS\productsAndBrandsDB.css">
     <link rel="icon" href="CHPImages\logo.ico" type="image/x-icon">
     <script defer src="fontawesome/js/all.js"></script>
     <script src="https://use.fontawesome.com/92d2dff442.js"></script>
-
 </head>
 
 <body>
     <!--Dividing the whole page into two divs one will contain the fixed side panel and the other will have the content of the option selected from the side panel-->
     <div id="sidePanel">
         <ul id="sideNavList">
-            <li onclick="location.href='./AdminPanel.php'; ">
+            <li onclick="location.href='AdminPanel.php'; ">
                 <i class="fas fa-home fa-sm"></i>
                 Dashboard
             </li>
@@ -37,6 +35,8 @@ if (!isset($_SESSION['LoggedInAdminName'])) {
                 <ul class="subList">
                     <li onclick="location.href='addProduct.php'; ">Product</li>
                     <li onclick="location.href='addBrand.php'; ">Brand</li>
+                    <li onclick="location.href='addCategory.php'; ">Category</li>
+                    <li onclick="location.href='addAds.php'; ">Advertisement</li>
                 </ul>
             </li>
             <li><i class="fas fa-pen-square fa-sm"></i>
@@ -51,13 +51,24 @@ if (!isset($_SESSION['LoggedInAdminName'])) {
                 <ul class="subList">
                     <li onclick="location.href='delete.php'; ">Product</li>
                     <li onclick="location.href='delete.php'; ">Brand</li>
+                    <li onclick="location.href='delete.php'; ">Advertisement</li>
+                    <li onclick="location.href='delete.php'; ">Customers</li>
+                    <li onclick="location.href='delete.php'; ">Admin</li>
                 </ul>
             </li>
-            <li><i class="fas fa-check-square fa-sm"></i>
-                Approve Orders</li>
-            <li class="current" onclick="location.href='feedback.php'; "><i class="fas fa-comment fa-sm"></i>
-                View Feedback</li>
-            <li  onclick="location.href='addAdmin.php'; ">
+            <li class="current"><i class="fas fa-database fa-sm"></i>
+                View Databases
+                <ul class="subList">
+                    <li onclick="location.href='productsDB.php'; ">Product</li>
+                    <li onclick="location.href='brandsDB.php'; ">Brand</li>
+                    <li onclick="location.href='adsDB.php'; ">Ads</li>
+                    <li onclick="location.href='categoriesDB.php'; ">Categories</li>
+                    <li onclick="location.href='customersDB.php'; ">Customers</li>
+                    <li onclick="location.href='adminsDB.php'; ">Admins</li>
+                    <li onclick="location.href='ordersDB.php'; ">Orders</li>
+                    
+                </ul>
+            <li onclick="location.href='addAdmin.php'; ">
                 <i class="fas fa-user-plus fa-sm"></i>
                 Add Admin
             </li>
@@ -86,53 +97,57 @@ if (!isset($_SESSION['LoggedInAdminName'])) {
                     </button>
                 </form>
             </div>
+        </div>
+        <!--Table-->
+        <div class='tableDiv'>
+            <h3>Product Table</h3>
+            <table class='tablePB'>
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Name</th>
+                        <th>Category</th>
+                        <th>Brand</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <?php
+                    $query = "SELECT * FROM `products`";
+                    $result = mysqli_query($con, $query);
+                    if ($result) {
+                        while ($rows = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+                            echo " 
+                            <tr>
+                                <td><div class='image'><img src='Products/" . $rows['p_image'] . "'></div></td>
+                                <td>$rows[product_name]</td>
+                                <td>$rows[p_category]</td>
+                                <td>$rows[p_brand]</td>
+                                <td>$rows[p_price]</td>
+                                <td>$rows[p_quantity]</td>
+                            </tr>
+                            ";
+                        }
+                    } else {
+                        echo "<script>alert('Cannot run Query')
+                    window.location.href='viewDatabases.php';
+                    </script>";
+                    }
+
+                    ?>
+                </tbody>
+            </table>
 
         </div>
-        <!--Table for viewing feedback-->
-        <h3 class="title">Feedback Record</h3>
-            <div class='tableDiv'>
-            <?php
-    $query="SELECT * FROM `feedback`";
-    $result=mysqli_query($con,$query);
-    if($result)
-    {
-        echo "
-            <table class='tb'>
-            <tr id='firstRow'>
-                <th>Order ID</th>
-                <th>Customer Name</th>
-                <th>Feedback</th>
-            </tr>";
-        while($rows=mysqli_fetch_array($result,MYSQLI_ASSOC))
-        {
-            echo "<tr class='dataRows'>
-                <td>$rows[order_ID]</td>
-                <td>$rows[customer_name]</td>
-                <td>$rows[text]</td>
-                </tr>
-                ";
-        }
-        echo "</table>";
-    }
-    else{
-        echo "<script>alert('Cannot run Query')
-            window.location.href='addAdmin.php';
-            </script>";
-    }
-    
-    ?>
-            </div>
     </div>
     <?php
     if (isset($_POST['logout'])) {
         session_destroy();
-        echo"<script>window.location.href='Admin_Login.php';</script>";
-
+        echo "<script>window.location.href='Admin_Login.php';</script>";
     }
-
     ?>
-
-    
 </body>
 
 </html>

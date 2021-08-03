@@ -25,8 +25,8 @@ if (!isset($_SESSION['LoggedInAdminName'])) {
     <div id="sidePanel">
         <ul id="sideNavList">
             <li class="current">
-            <i class="fas fa-home fa-sm"></i>
-            Dashboard
+                <i class="fas fa-home fa-sm"></i>
+                Dashboard
             </li>
             <li><i class="fas fa-plus-square fa-sm"></i>
                 Add Items
@@ -34,7 +34,7 @@ if (!isset($_SESSION['LoggedInAdminName'])) {
                     <li onclick="location.href='addProduct.php'; ">Product</li>
                     <li onclick="location.href='addBrand.php'; ">Brand</li>
                     <li onclick="location.href='addCategory.php'; ">Category</li>
-                    <li onclick="location.href='addAds.php'; ">Ad</li>
+                    <li onclick="location.href='addAds.php'; ">Advertisement</li>
                 </ul>
             </li>
             <li><i class="fas fa-pen-square fa-sm"></i>
@@ -49,16 +49,26 @@ if (!isset($_SESSION['LoggedInAdminName'])) {
                 <ul class="subList">
                     <li onclick="location.href='delete.php'; ">Product</li>
                     <li onclick="location.href='delete.php'; ">Brand</li>
-                    <li onclick="location.href='delete.php'; ">Ads</li>
+                    <li onclick="location.href='delete.php'; ">Advertisement</li>
                     <li onclick="location.href='delete.php'; ">Customers</li>
                     <li onclick="location.href='delete.php'; ">Admin</li>
                 </ul>
             </li>
-            <li onclick="location.href='feedback.php'; "><i class="fas fa-comment fa-sm"></i>
-            View Database</li>
+            <li><i class="fas fa-database fa-sm"></i>
+                View Databases
+                <ul class="subList">
+                    <li onclick="location.href='productsDB.php'; ">Product</li>
+                    <li onclick="location.href='brandsDB.php'; ">Brand</li>
+                    <li onclick="location.href='adsDB.php'; ">Ads</li>
+                    <li onclick="location.href='categoriesDB.php'; ">Categories</li>
+                    <li onclick="location.href='customersDB.php'; ">Customers</li>
+                    <li onclick="location.href='adminsDB.php'; ">Admins</li>
+                    <li onclick="location.href='ordersDB.php'; ">Orders</li>
+
+                </ul>
             <li onclick="location.href='addAdmin.php'; ">
-            <i class="fas fa-user-plus fa-sm"></i>
-            Add Admin
+                <i class="fas fa-user-plus fa-sm"></i>
+                Add Admin
             </li>
         </ul>
     </div>
@@ -102,9 +112,9 @@ if (!isset($_SESSION['LoggedInAdminName'])) {
                 <div class="linkDivsImage"><img src="AHPImages\delete.png" alt="delete"></div>
                 Delete Items
             </div>
-            <div class="linkDivs">
-                <div class="linkDivsImage" onclick="location.href='feedback.php'; "><img src="AHPImages\feedback.png" alt="manage"></div>
-                View Feedback
+            <div class="linkDivs" onclick="location.href='viewDatabases.php'; ">
+                <div class="linkDivsImage"><img src="AHPImages\feedback.png" alt="database"></div>
+                View Database
             </div>
             <div class="linkDivs" onclick="location.href='addAdmin.php'; ">
                 <div class="linkDivsImage"><img src="AHPImages\add.png" alt="manage"></div>
@@ -117,7 +127,7 @@ if (!isset($_SESSION['LoggedInAdminName'])) {
     <?php
     if (isset($_POST['logout'])) {
         session_destroy();
-        echo"<script>window.location.href='Admin_Login.php';</script>";
+        echo "<script>window.location.href='Admin_Login.php';</script>";
     }
     ?>
 </body>

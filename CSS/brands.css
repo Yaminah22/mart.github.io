@@ -53,3 +53,19 @@
 a {
     text-decoration: none;
 }
+
+#brandsContainer h3 {
+    font-size: 1.5em;
+    font-family: 'Times New Roman', Times, serif;
+    padding: 2%;
+    font-weight: 200;
+    width: 100%;
+}
+
+#brandsContainer p {
+    font-size: 1em;
+    font-family: 'Times New Roman', Times, serif;
+    padding: 2%;
+    font-weight: 200;
+    width: 100%;
+}

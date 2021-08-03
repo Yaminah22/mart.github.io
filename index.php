@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
 <?php
-    require("connections.php");
-    session_start();
+require("connections.php");
+session_start();
 ?>
+
 <head>
   <title>Mart Home</title>
   <meta name="description" content="Online Grocery Store" />
@@ -22,9 +23,9 @@
   <!--This will only appear when search button is clicked-->
   <div id="searchContainer" class="opacBackground">
     <div id="searchCloseBtn" onclick="closeSearch()"><i class="fas fa-times"></i></div>
-    <form class="searchBarContainer" action="" method="">
-      <input class="searchBar" type="text" name="Search" placeholder="Search in Mart....">
-      <button id="SearchButton"><img src="CHPImages\searchBarButton.png" /></button>
+    <form class="searchBarContainer" action="search.php" method="POST">
+      <input class="searchBar" type="text" name="key_word" placeholder="Search in Mart....">
+      <button id="SearchButton" name="search"><img src="CHPImages\searchBarButton.png" /></button>
     </form>
   </div>
   <!--Top Navigation Pane-->
@@ -39,7 +40,7 @@
         </button>
         <!--Logo and Title-->
         <div id="pageTitle">
-          <a href="./customer_homePage.php">
+          <a href="./index.php">
             <div id="logoImg">
               <img src="CHPImages\title.png" alt="Mart">
             </div>
@@ -56,21 +57,37 @@
           </div>
         </div>
         <!--User Accounts icon-->
-        <a href="./CustomerLogin.html" id="accountIcon">
-          <img src="CHPImages\accountIcon.png">
-          <div id="account_dropdown">
-            Click Here to Login or Create Account
-          </div>
-        </a>
+        <?php
+        if (isset($_SESSION['logged_in'])  && $_SESSION['logged_in'] == true) {
+          echo "
+                     <div  id='accountIcon'>
+                     <img src='CHPImages\accountIcon.png'>
+                     <div id='account_dropdown'>
+                        $_SESSION[username] - <a href='logout.php'>LOGOUT</a>
+                     </div>
+                     </div>
+                        ";
+        } else {
+          echo "
+                   <div  id='accountIcon'>
+                      <a href='CustomerLogin.php'>
+                      <img src='CHPImages\accountIcon.png'>
+                     <div id='account_dropdown'>
+                        Click Here to Login or Create Account!
+                     </div>
+                    </div>
+                     </a>
+                      ";
+        }
+        ?>
         <!--Cart Status-->
         <a href="cart.php" id="cart_icon">
           <img src="CHPImages\cartIcon.png">
           <div id="cartDropdown">
-            <?php 
-            $count=0;
-            if(isset($_SESSION['cart']))
-            {
-              $count=count($_SESSION['cart']);
+            <?php
+            $count = 0;
+            if (isset($_SESSION['cart'])) {
+              $count = count($_SESSION['cart']);
             }
             echo "Your cart has $count items";
             ?>
@@ -81,27 +98,27 @@
     <!--Main Navigation Bar-->
     <div id="navigationBar">
       <ul>
-        <li class="current"><a href="./customer_homePage.php"><i class="fas fa-home fa-sm" ></i> Home</a></li>
+        <li class="current"><a href="index.php"><i class="fas fa-home fa-sm"></i> Home</a></li>
         <li><a href="categoriesList.php"><i class="fas fa-clipboard-list"></i> Categories</a></li>
         <li><a href="brandsList.php"><i class="fas fa-star"></i> Brands</a></li>
         <li><a href="products.php"><i class="fas fa-boxes"></i></i> Products</a></li>
-        <li><a href="#myOrders"><i class="fas fa-shopping-bag"></i> My Orders</a></li>
-        <li><a href="#help"><i class="fas fa-phone-alt"></i> Contact Us</a></li>
+        <li><a href="myOrders.php"><i class="fas fa-shopping-bag"></i> My Orders</a></li>
+        <li><a href="contact.php"><i class="fas fa-phone-alt"></i> Contact Us</a></li>
       </ul>
     </div>
   </div>
   <!--Hidden Side Navigation Menu-->
   <div id="hiddenNavigationBar">
     <div id="close"><button id="closeButton" onclick="ClosehiddenMenu()">
-    <i class="fas fa-times"></i>
+        <i class="fas fa-times"></i>
       </button></div>
     <ul>
-      <li class="current"><a href="./customer_homePage.html"><i class="fas fa-home fa-sm" ></i> Home</a></li>
+      <li class="current"><a href="index.php"><i class="fas fa-home fa-sm"></i> Home</a></li>
       <li><a href="categoriesList.php"><i class="fas fa-clipboard-list"></i> Categories</a></li>
       <li><a href="brandsList.php"><i class="fas fa-star"></i> Brands</a></li>
       <li><a href="products.php"><i class="fas fa-boxes"></i></i> Products</a></li>
       <li><a href="#myOrders"><i class="fas fa-shopping-bag"></i> My Orders</a></li>
-      <li><a href="#help"><i class="fas fa-phone-alt"></i> Contact Us</a></li>
+      <li><a href="contact.php"><i class="fas fa-phone-alt"></i> Contact Us</a></li>
     </ul>
   </div>
 
@@ -110,41 +127,37 @@
     <div class="categories_navigation">
       <h3>Categories</h3>
       <ul id="mainList">
-      <?php
-    $query1="SELECT * FROM `categories` ORDER BY `category_name` ASC";
-    $result1=mysqli_query($con,$query1);
-    if($result1)
-    {
-      while($row1=mysqli_fetch_array($result1))
-      {
+        <?php
+        $query1 = "SELECT * FROM `categories` ORDER BY `category_name` ASC";
+        $result1 = mysqli_query($con, $query1);
+        if ($result1) {
+          while ($row1 = mysqli_fetch_array($result1)) {
         ?>
-          <li onclick="location.href='categories.php?category=<?php echo $row1['category_name'];?>'; "><?php echo $row1['category_name'];?></li>
-      <?php
-      }
-    }
-      ?>
-            
+            <li onclick="location.href='categories.php?category=<?php echo $row1['category_name']; ?>'; "><?php echo $row1['category_name']; ?></li>
+        <?php
+          }
+        }
+        ?>
+
       </ul>
     </div>
     <!--Sales/Discounts' slide show -->
     <div class="slidesAndDots">
       <div class="slide_container">
         <?php
-        $query_slides="SELECT * FROM `ads` ORDER BY `ad_id` ASC LIMIT 5";
-        $slides_result=mysqli_query($con,$query_slides);
-        if($slides_result)
-        {
-          while($slides=mysqli_fetch_array($slides_result))
-          {
+        $query_slides = "SELECT * FROM `ads` ORDER BY `ad_id` ASC LIMIT 5";
+        $slides_result = mysqli_query($con, $query_slides);
+        if ($slides_result) {
+          while ($slides = mysqli_fetch_array($slides_result)) {
             echo "
             <div class='image_container fade'>
-            <img src='Ads/".$slides['ad_image']."'class='slider_image'>
+            <img src='Ads/" . $slides['ad_image'] . "'class='slider_image'>
           </div>
             ";
           }
         }
         ?>
-      
+
       </div>
       <div id="dotContainer">
         <span class="dot">.</span>
@@ -158,77 +171,72 @@
   </div>
 
   <!--All Products-->
-  <h2 class="level2Headings" >Products</h2>
+  <h2 class="level2Headings">Products</h2>
   <div id="products">
     <!--Products list-->
     <div class="horizontal_list_container">
-    <?php
-    $query="SELECT * FROM `products` ORDER BY `product_name` ASC LIMIT 4";
-    $result=mysqli_query($con,$query);
-    if($result)
-    {
-      while($row=mysqli_fetch_array($result))
-      {
-        if($row['p_quantity']>0){
-          $availability="In Stock";
-        }
-        else{
-          $availability="Out of Stock";
-        }
-        ?>
-      <form method="POST" action="manageCart.php">
-<div class="box">
-  <div class="small-img">
-      <?php echo "<img src='Products/".$row['p_image']."' alt=' $row[product_name]'>";?>    
-    <div class="overlay">
-      <button type="submit" name="addToCart" class="buy-btn">Add To Cart</button>
-    </div>
-  </div>
-  <div class="detail-box">
-    <div class="type">
-      <p><?php echo "$row[product_name]";?></p>
-      <span><?php echo $availability;?></span>
-    </div>
-    <p class="price1">Rs.<?php echo $row['p_price'];?></p>
-    <input type="hidden" name="hidden_name" value="<?php echo $row['product_name'];?>">
-    <input type="hidden" name="hidden_price" value="<?php echo $row['p_price'];?>">
-
-  </div>
-  </div>
-</form>
       <?php
+      $query = "SELECT * FROM `products` ORDER BY `product_name` ASC LIMIT 4";
+      $result = mysqli_query($con, $query);
+      if ($result) {
+        while ($row = mysqli_fetch_array($result)) {
+          if ($row['p_quantity'] > 0) {
+            $availability = "In Stock";
+          } else {
+            $availability = "Out of Stock";
+          }
+      ?>
+          <form method="POST" action="manageCart.php">
+            <div class="box">
+              <div class="small-img">
+                <?php echo "<img src='Products/" . $row['p_image'] . "' alt=' $row[product_name]'>"; ?>
+                <div class="overlay">
+                  <button type="submit" name="addToCart" class="buy-btn">Add To Cart</button>
+                </div>
+              </div>
+              <div class="detail-box">
+                <div class="type">
+                  <p><?php echo "$row[product_name]"; ?></p>
+                  <span><?php echo $availability; ?></span>
+                </div>
+                <p class="price1">Rs.<?php echo $row['p_price']; ?></p>
+                <input type="hidden" name="hidden_name" value="<?php echo $row['product_name']; ?>">
+                <input type="hidden" name="hidden_price" value="<?php echo $row['p_price']; ?>">
+
+              </div>
+            </div>
+          </form>
+      <?php
+        }
       }
-    }
-    ?>
+      ?>
     </div>
-      
-      
+
+
   </div>
   <!--Brands-->
   <h2 class="level2Headings" onclick="location.href='brandsList.php'; ">Brands</h2>
   <div id="brands">
     <!--Brands List-->
     <div class="horizontal_list_container">
-    <?php
-    $query1="SELECT * FROM `brands` ORDER BY `brand_name` ASC LIMIT 5";
-    $result1=mysqli_query($con,$query1);
-    if($result1)
-    {
-      while($row1=mysqli_fetch_array($result1))
-      {
-        
-        ?>
-      <div class="brandCards">
-        <a href='brands.php?brand=<?php echo $row1['brand_name'];?>'>
-          <div class="cardImages">
-          <?php echo "<img src='Brands/".$row1['brand_image']."' alt=' $row1[brand_name]'>";?>
-          </div>
-          <h4 class="brandsTitle"><?php echo $row1['brand_name'];?></h4>
-        </a>
-      </div>
       <?php
+      $query1 = "SELECT * FROM `brands` ORDER BY `brand_name` ASC LIMIT 5";
+      $result1 = mysqli_query($con, $query1);
+      if ($result1) {
+        while ($row1 = mysqli_fetch_array($result1)) {
+
+      ?>
+          <div class="brandCards">
+            <a href='brands.php?brand=<?php echo $row1['brand_name']; ?>'>
+              <div class="cardImages">
+                <?php echo "<img src='Brands/" . $row1['brand_image'] . "' alt=' $row1[brand_name]'>"; ?>
+              </div>
+              <h4 class="brandsTitle"><?php echo $row1['brand_name']; ?></h4>
+            </a>
+          </div>
+      <?php
+        }
       }
-    }
       ?>
     </div>
   </div>
@@ -241,9 +249,9 @@
       </div>
       <p class="cardNames">Bakery</p>
       <ul>
-        <li class="categoriesItems"><a href="#">fresh breads</a></li>
-        <li class="categoriesItems"><a href="#">pastries</a></li>
-        <li class="categoriesItems"><a href="#">buns</a></li>
+        <li class="categoriesItems"><a href="categories.php?category=Fresh Bread">fresh breads</a></li>
+        <li class="categoriesItems"><a href="categories.php?category=Pastries">pastries</a></li>
+        <li class="categoriesItems"><a href="categories.php?category=Buns">buns</a></li>
       </ul>
     </div>
     <div class="categoriesCard">
@@ -252,9 +260,9 @@
       </div>
       <p class="cardNames">Canned Goods</p>
       <ul>
-        <li class="categoriesItems"><a href="#">soups</a></li>
-        <li class="categoriesItems"><a href="#">Canned Fruits</a></li>
-        <li class="categoriesItems"><a href="#">Dry Fruits</a></li>
+        <li class="categoriesItems"><a href="categories.php?category=Soups">soups</a></li>
+        <li class="categoriesItems"><a href="categories.php?category=Canned Fruits">Canned Fruits</a></li>
+        <li class="categoriesItems"><a href="categories.php?category=Dry Fruits">Dry Fruits</a></li>
       </ul>
     </div>
     <div class="categoriesCard">
@@ -263,9 +271,9 @@
       </div>
       <p class="cardNames">Dairy Products</p>
       <ul>
-        <li class="categoriesItems"><a href="#">Eggs</a></li>
-        <li class="categoriesItems"><a href="#">Cheese</a></li>
-        <li class="categoriesItems"><a href="#">Milk</a></li>
+        <li class="categoriesItems"><a href="categories.php?category=Eggs">Eggs</a></li>
+        <li class="categoriesItems"><a href="categories.php?category=Cheese">Cheese</a></li>
+        <li class="categoriesItems"><a href="categories.php?category=Milk">Milk</a></li>
       </ul>
     </div>
     <div class="categoriesCard">
@@ -274,9 +282,9 @@
       </div>
       <p class="cardNames">Snacks</p>
       <ul>
-        <li class="categoriesItems"><a href="#">Cookies</a></li>
-        <li class="categoriesItems"><a href="#">Crackers</a></li>
-        <li class="categoriesItems"><a href="#">Chips</a></li>
+        <li class="categoriesItems"><a href="categories.php?category=Cookies">Cookies</a></li>
+        <li class="categoriesItems"><a href="categories.php?category=Crackers">Crackers</a></li>
+        <li class="categoriesItems"><a href="categories.php?category=Chips">Chips</a></li>
       </ul>
     </div>
     <div class="categoriesCard">
@@ -285,8 +293,8 @@
       </div>
       <p class="cardNames">Fresh Produces</p>
       <ul>
-        <li class="categoriesItems"><a href="#">Vegetables</a></li>
-        <li class="categoriesItems"><a href="#">Fruits</a></li>
+        <li class="categoriesItems"><a href="categories.php?category=Vegetables">Vegetables</a></li>
+        <li class="categoriesItems"><a href="categories.php?category=Fruits">Fruits</a></li>
       </ul>
     </div>
     <div class="categoriesCard">
@@ -295,9 +303,9 @@
       </div>
       <p class="cardNames">Meat & Fish</p>
       <ul>
-        <li class="categoriesItems"><a href="#">Chicken</a></li>
-        <li class="categoriesItems"><a href="#">Mutton</a></li>
-        <li class="categoriesItems"><a href="#">Fish</a></li>
+        <li class="categoriesItems"><a href="categories.php?category=Chicken">Chicken</a></li>
+        <li class="categoriesItems"><a href="categories.php?category=Mutton">Mutton</a></li>
+        <li class="categoriesItems"><a href="categories.php?category=Fish">Fish</a></li>
       </ul>
     </div>
     <div class="categoriesCard">
@@ -306,9 +314,9 @@
       </div>
       <p class="cardNames">Beverages</p>
       <ul>
-        <li class="categoriesItems"><a href="#">Juices</a></li>
-        <li class="categoriesItems"><a href="#">Carbonated Drinks</a></li>
-        <li class="categoriesItems"><a href="#">Energy Drinks</a></li>
+        <li class="categoriesItems"><a href="categories.php?category=Juices">Juices</a></li>
+        <li class="categoriesItems"><a href="categories.php?category=Carbonated Drinks">Carbonated Drinks</a></li>
+        <li class="categoriesItems"><a href="categories.php?category=Energy Drinks">Energy Drinks</a></li>
       </ul>
     </div>
     <div class="categoriesCard">
@@ -317,8 +325,8 @@
       </div>
       <p class="cardNames">Frozen Products</p>
       <ul>
-        <li class="categoriesItems"><a href="#">Ice Cream</a></li>
-        <li class="categoriesItems"><a href="#">Half Cooked</a></li>
+        <li class="categoriesItems"><a href="categories.php?category=Ice Cream">Ice Cream</a></li>
+        <li class="categoriesItems"><a href="categories.php?category=Half Cooked">Half Cooked</a></li>
       </ul>
     </div>
     <div class="categoriesCard">
@@ -327,9 +335,9 @@
       </div>
       <p class="cardNames">Other</p>
       <ul>
-        <li class="categoriesItems"><a href="#">Grains</a></li>
-        <li class="categoriesItems"><a href="#">Pasta</a></li>
-        <li class="categoriesItems"><a href="#">Sauces & Spices</a></li>
+        <li class="categoriesItems"><a href="categories.php?category=Grains">Grains</a></li>
+        <li class="categoriesItems"><a href="categories.php?category=Pasta">Pasta</a></li>
+        <li class="categoriesItems"><a href="categories.php?category=Sauces and Spices">Sauces & Spices</a></li>
       </ul>
     </div>
   </div>

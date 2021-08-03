@@ -24,15 +24,17 @@ if (!isset($_SESSION['LoggedInAdminName'])) {
     <!--Dividing the whole page into two divs one will contain the fixed side panel and the other will have the content of the option selected from the side panel-->
     <div id="sidePanel">
         <ul id="sideNavList">
-            <li>
-            <i class="fas fa-home fa-sm"></i>
-            Dashboard
+            <li onclick="location.href='AdminPanel.php'">
+                <i class="fas fa-home fa-sm"></i>
+                Dashboard
             </li>
             <li class="current"><i class="fas fa-plus-square fa-sm"></i>
                 Add Items
                 <ul class="subList">
                     <li onclick="location.href='addProduct.php'; ">Product</li>
                     <li onclick="location.href='addBrand.php'; ">Brand</li>
+                    <li onclick="location.href='addCategory.php'; ">Category</li>
+                    <li onclick="location.href='addAds.php'; ">Advertisement</li>
                 </ul>
             </li>
             <li><i class="fas fa-pen-square fa-sm"></i>
@@ -47,13 +49,28 @@ if (!isset($_SESSION['LoggedInAdminName'])) {
                 <ul class="subList">
                     <li onclick="location.href='delete.php'; ">Product</li>
                     <li onclick="location.href='delete.php'; ">Brand</li>
+                    <li onclick="location.href='delete.php'; ">Advertisement</li>
+                    <li onclick="location.href='delete.php'; ">Customers</li>
+                    <li onclick="location.href='delete.php'; ">Admin</li>
                 </ul>
             </li>
-            <li onclick="location.href='feedback.php'; "><i class="fas fa-comment fa-sm"></i>
-            View Feedback</li>
+            <li><i class="fas fa-database fa-sm"></i>
+                View Databases
+                <ul class="subList">
+                    <li onclick="location.href='productsDB.php'; ">Product</li>
+                    <li onclick="location.href='brandsDB.php'; ">Brand</li>
+                    <li onclick="location.href='adsDB.php'; ">Ads</li>
+                    <li onclick="location.href='categoriesDB.php'; ">Categories</li>
+                    <li onclick="location.href='customersDB.php'; ">Customers</li>
+                    <li onclick="location.href='adminsDB.php'; ">Admins</li>
+                    <li onclick="location.href='ordersDB.php'; ">Orders</li>
+
+                </ul>
+
+            </li>
             <li onclick="location.href='addAdmin.php'; ">
-            <i class="fas fa-user-plus fa-sm"></i>
-            Add Admin
+                <i class="fas fa-user-plus fa-sm"></i>
+                Add Admin
             </li>
         </ul>
     </div>
@@ -81,33 +98,33 @@ if (!isset($_SESSION['LoggedInAdminName'])) {
                 </form>
             </div>
             <!--All options-->
-        
-    </div>
-    <div class="rightPanelSubDivs">
-    <div class="linkDivs" onclick="location.href='addProduct.php'; ">
-            <i class="fas fa-paste fa-2x"></i>Add Products
+
+        </div>
+        <div class="rightPanelSubDivs">
+            <div class="linkDivs" onclick="location.href='addProduct.php'; ">
+                <i class="fas fa-paste fa-2x"></i>Add Products
             </div>
             <div class="linkDivs" onclick="location.href='addBrand.php'; ">
-            <i class="fas fa-star fa-2x"></i>
+                <i class="fas fa-star fa-2x"></i>
                 Add Brands
             </div>
             <div class="linkDivs" onclick="location.href='addCategory.php'; ">
-            <i class="far fa-object-group fa-2x"></i>
+                <i class="far fa-object-group fa-2x"></i>
                 Add Categories
             </div>
             <div class="linkDivs" onclick="location.href='addAds.php'; ">
-            <i class="fas fa-image fa-2x"></i>
+                <i class="fas fa-image fa-2x"></i>
                 Add Ads
             </div>
-            
+
 
         </div>
-    <?php
-    if (isset($_POST['logout'])) {
-        session_destroy();
-        echo"<script>window.location.href='Admin_Login.php';</script>";
-    }
-    ?>
+        <?php
+        if (isset($_POST['logout'])) {
+            session_destroy();
+            echo "<script>window.location.href='Admin_Login.php';</script>";
+        }
+        ?>
 </body>
 
 </html>

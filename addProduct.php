@@ -2,31 +2,29 @@
 <html>
 
 <?php
-    require("connections.php");
-    session_start();
-    if (!isset($_SESSION['LoggedInAdminName'])) {
-        header("location: Admin_Login.php");
-    }
-    #filling up the brands select box
-    $s="SELECT * FROM `brands`";
-    $brand=mysqli_query($con,$s);
-    $option="";
-    while($rows=mysqli_fetch_array($brand))
-    {
-        $option=$option."<option value='$rows[1]'>$rows[1]</option>";
-    }
-    #filling up the categories select box
-    $x="SELECT * FROM `categories`";
-    $c=mysqli_query($con,$x);
-    $opt="";
-    while($row2=mysqli_fetch_array($c))
-    {
-        $opt=$opt."<option value='$row2[1]'>$row2[1]</option>";
-    }
+require("connections.php");
+session_start();
+if (!isset($_SESSION['LoggedInAdminName'])) {
+    header("location: Admin_Login.php");
+}
+#filling up the brands select box
+$s = "SELECT * FROM `brands`";
+$brand = mysqli_query($con, $s);
+$option = "";
+while ($rows = mysqli_fetch_array($brand)) {
+    $option = $option . "<option value='$rows[1]'>$rows[1]</option>";
+}
+#filling up the categories select box
+$x = "SELECT * FROM `categories`";
+$c = mysqli_query($con, $x);
+$opt = "";
+while ($row2 = mysqli_fetch_array($c)) {
+    $opt = $opt . "<option value='$row2[1]'>$row2[1]</option>";
+}
 ?>
 
 <head>
-    <title>Add New Product</title>
+    <title>Add Product</title>
     <meta name="description" content="Online Grocery Store" />
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" charset="utf-8">
@@ -36,24 +34,24 @@
     <link rel="icon" href="CHPImages\logo.ico" type="image/x-icon">
     <script defer src="fontawesome/js/all.js"></script>
     <script src="https://use.fontawesome.com/92d2dff442.js"></script>
-    
+
 </head>
 
 <body>
     <!--Dividing the whole page into two divs one will contain the fixed side panel and the other will have the content of the option selected from the side panel-->
     <div id="sidePanel">
         <ul id="sideNavList">
-            <li onclick="location.href='./AdminPanel.php'; ">
+            <li onclick="location.href='AdminPanel.php'; ">
                 <i class="fas fa-home fa-sm"></i>
                 Dashboard
             </li>
-            <li class="current"><i class="fas fa-plus-square fa-sm" onclick="location.href='addItems.php'"></i>
+            <li class="current"><i class="fas fa-plus-square fa-sm"></i>
                 Add Items
                 <ul class="subList">
                     <li onclick="location.href='addProduct.php'; ">Product</li>
                     <li onclick="location.href='addBrand.php'; ">Brand</li>
                     <li onclick="location.href='addCategory.php'; ">Category</li>
-                    <li onclick="location.href='addAds.php'; ">Ad</li>
+                    <li onclick="location.href='addAds.php'; ">Advertisement</li>
                 </ul>
             </li>
             <li><i class="fas fa-pen-square fa-sm"></i>
@@ -66,19 +64,28 @@
             <li><i class="fas fa-trash fa-sm"></i>
                 Delete Items
                 <ul class="subList">
-                <li onclick="location.href='delete.php'; ">Product</li>
+                    <li onclick="location.href='delete.php'; ">Product</li>
                     <li onclick="location.href='delete.php'; ">Brand</li>
-                    <li onclick="location.href='delete.php'; ">Ads</li>
+                    <li onclick="location.href='delete.php'; ">Advertisement</li>
                     <li onclick="location.href='delete.php'; ">Customers</li>
                     <li onclick="location.href='delete.php'; ">Admin</li>
                 </ul>
+            </li>
+            <li><i class="fas fa-database fa-sm"></i>
+                View Database
+                <ul class="subList">
+                    <li onclick="location.href='productsDB.php'; ">Product</li>
+                    <li onclick="location.href='brandsDB.php'; ">Brand</li>
+                    <li onclick="location.href='adsDB.php'; ">Advertisement</li>
+                    <li onclick="location.href='categoriesDB.php'; ">Category</li>
+                    <li onclick="location.href='customersDB.php'; ">Customer</li>
+                    <li onclick="location.href='adminsDB.php'; ">Admin</li>
+                    <li onclick="location.href='ordersDB.php'; ">Order</li>
+
                 </ul>
             </li>
-            <li><i class="fas fa-check-square fa-sm"></i>
-                Approve Orders</li>
-            <li onclick="location.href='feedback.php'; "><i class="fas fa-comment fa-sm"></i>
-                View Feedback</li>
-            <li  onclick="location.href='addAdmin.php'; ">
+
+            <li onclick="location.href='addAdmin.php'; ">
                 <i class="fas fa-user-plus fa-sm"></i>
                 Add Admin
             </li>
@@ -109,63 +116,56 @@
             </div>
         </div>
         <div class="addDiv">
-        <form method="POST" enctype="multipart/form-data">
-            <h2 class="title">Add Product</h2>
-            <input class="inputField" type="text" name="name" placeholder="Product Name" required>
-            <select name="category" class="selectField" required>
-                <option value="" disabled selected>Product Category</option>
-                <?php echo $opt;?>
-            </select>
-            <select name="brand" class="selectField" required>
-                <option value="" disabled selected>Product Brand</option>
-                <?php echo $option;?>
-            </select>
-            <input class="inputField" type="number" name="price" placeholder="Product Price" required>
-            <input class="inputField" type="number" name="quantity" placeholder="Product Quantity" required>
-            <label for="imageFile">Select Product Image</label>
-            <input type="file" name="image" id="imageFile" required>
-            <button type="submit" name="addProduct" class="btn">Add Product</button>
-        </form>
-            
+            <form method="POST" enctype="multipart/form-data">
+                <h2 class="title">Add Product</h2>
+                <input class="inputField" type="text" name="name" placeholder="Product Name" required>
+                <select name="category" class="selectField" required>
+                    <option value="" disabled selected>Product Category</option>
+                    <?php echo $opt; ?>
+                </select>
+                <select name="brand" class="selectField" required>
+                    <option value="" disabled selected>Product Brand</option>
+                    <?php echo $option; ?>
+                </select>
+                <input class="inputField" type="number" name="price" placeholder="Product Price" required>
+                <input class="inputField" type="number" name="quantity" placeholder="Product Quantity" required>
+                <label for="imageFile">Select Product Image</label>
+                <input type="file" name="image" id="imageFile" required>
+                <button type="submit" name="addProduct" class="btn">Add Product</button>
+            </form>
+
         </div>
     </div>
     <?php
     if (isset($_POST['logout'])) {
         session_destroy();
-        echo"<script>window.location.href='Admin_Login.php';</script>";
+        echo "<script>window.location.href='Admin_Login.php';</script>";
     }
-    if(isset($_POST['addProduct']))
-    {
-        $query="SELECT * FROM `products` WHERE product_name='$_POST[name]'";
-        $result=mysqli_query($con,$query);
-        if ($result)
-        {
-            if(mysqli_num_rows($result)>0)
-            {
+    if (isset($_POST['addProduct'])) {
+        $query = "SELECT * FROM `products` WHERE product_name='$_POST[name]'";
+        $result = mysqli_query($con, $query);
+        if ($result) {
+            if (mysqli_num_rows($result) > 0) {
                 echo "<script>alert('Product Already Exists!')
                     window.location.href='addProduct.php';
                     </script>";
-            }
-            else{
-                $file=$_FILES['image']['name'];
-                $add="INSERT INTO `products`(`product_name`, `p_category`, `p_brand`, `p_price`, `p_quantity`, `p_image`) VALUES ('$_POST[name]','$_POST[category]','$_POST[brand]','$_POST[price]','$_POST[quantity]','$file')";
-                $run=mysqli_query($con,$add);
-                if($run){
-                    if(move_uploaded_file($_FILES['image']['tmp_name'],"Products/$file")){
+            } else {
+                $file = $_FILES['image']['name'];
+                $add = "INSERT INTO `products`(`product_name`, `p_category`, `p_brand`, `p_price`, `p_quantity`, `p_image`) VALUES ('$_POST[name]','$_POST[category]','$_POST[brand]','$_POST[price]','$_POST[quantity]','$file')";
+                $run = mysqli_query($con, $add);
+                if ($run) {
+                    if (move_uploaded_file($_FILES['image']['tmp_name'], "Products/$file")) {
                         echo "<script>alert('New Product - $_POST[name] - Added Successfully!')
                     window.location.href='addProduct.php';
                     </script>";
-                    }
-                    else{
+                    } else {
                         echo "<script>alert('Product Registration Failed!')
                     window.location.href='addProduct.php';
                     </script>";
                     }
                 }
             }
-        }
-        else
-        {
+        } else {
             echo "<script>alert('Cannot run Query')
                     window.location.href='addProduct.php';
                     </script>";

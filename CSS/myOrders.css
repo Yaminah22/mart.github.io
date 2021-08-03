@@ -1,0 +1,95 @@
+#tableContainer {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    padding-top: 8.875em;
+    padding-bottom: 2em;
+    justify-content: center;
+    align-items: center;
+    overflow-y: scroll;
+}
+
+#tableContainer h3 {
+    font-size: 2em;
+    font-family: Bookman, URW Bookman L, serif;
+    font-weight: 200;
+    font-variant: small-caps;
+    margin: 2%;
+    border-bottom: 1px solid rgb(201, 121, 1);
+}
+
+.tableLarge {
+    border-collapse: collapse;
+    width: 90%;
+    min-width: 320px;
+    font-family: Didot, serif;
+    margin-top: 1em;
+}
+
+.firstRow {
+    font-size: 1.1em;
+    text-align: center;
+    font-variant: small-caps;
+    background-color: rgb(173, 147, 100);
+    color: white;
+}
+
+.tableLarge thead tr {
+    border-bottom: 1px solid rgb(201, 121, 1);
+}
+
+.tableLarge thead tr th {
+    padding: 1%;
+    width: auto;
+    word-wrap: normal;
+}
+
+.tableLarge tbody tr {
+    font-size: 1em;
+    text-align: center;
+    border-bottom: 1px solid rgb(201, 121, 1);
+}
+
+.tableLarge tbody tr td {
+    width: auto;
+    text-align: center;
+    word-wrap: break-word;
+}
+
+.tableSmall {
+    border-collapse: collapse;
+    margin-top: 1em;
+    margin-left: 0.3em;
+    margin-right: 0.3em;
+    width: 99%;
+}
+
+.tableSmall thead tr {
+    font-size: 1em;
+    text-align: center;
+    font-variant: small-caps;
+    border-bottom: 1px solid rgb(201, 121, 1);
+}
+
+.tableSmall thead tr th {
+    padding: 1%;
+    width: auto;
+}
+
+.tableSmall tbody tr {
+    font-size: 0.9em;
+    text-align: center;
+    border-bottom: 1px solid rgb(201, 121, 1);
+    word-wrap: break-word;
+}
+
+.tableSmall tbody tr td {
+    width: auto;
+    padding: 1%;
+}
+
+.tableSmall tbody tr:last-child {
+    border-bottom: none;
+}
