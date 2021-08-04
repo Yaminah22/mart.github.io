@@ -46,7 +46,7 @@ if(isset($_POST['signup']))
                               echo"
                               <script>
                                alert('Registration Successfull');
-                               window.history.back();
+                               window.location.href='index.php';
                               </script>
                               ";
                             }
