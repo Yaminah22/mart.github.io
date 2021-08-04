@@ -331,7 +331,7 @@ session_start();
     </div>
     <div class="categoriesCard">
       <div class="categoriesCardImage">
-        <img src="CHPImages\g+p.png" alt="Grains and Pasta">
+        <img src="CHPImages\gp.png" alt="Grains and Pasta">
       </div>
       <p class="cardNames">Other</p>
       <ul>
